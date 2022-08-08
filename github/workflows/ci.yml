@@ -1,0 +1,27 @@
+name: serverless-template-ci
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup the environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - name: install dependencies
+        run: yarn
+      - name: run the lint
+        run: yarn lint
+      - name: run the build
+        run: yarn build
