@@ -1,0 +1,16 @@
+.DS_Store
+coverage/
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+.vscode/
+.webpack
+.idea
+
+!.env*.local
+.env*.test*
+.history
+yarn-error.log

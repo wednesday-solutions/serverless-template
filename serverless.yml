@@ -1,0 +1,20 @@
+service:
+  name: ${env:NAME}
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-webpack
+  - serverless-offline
+
+provider:
+  name: aws
+  timeout: ${env:TIMEOUT_SECONDS}
+  runtime: nodejs14.x
+  stage: ${env:STAGE}
+  region: ${env:REGION}
+  versionFunctions: false
+package:
+  individually: true
+custom:
+  urlPrefix: 'sls'
+  webpack:
+    includeModules: true
