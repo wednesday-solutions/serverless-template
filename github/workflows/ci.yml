@@ -2,6 +2,7 @@ name: serverless-template-ci
 on:
   pull_request:
     branches:
+      - dev
       - main
 
 jobs:
@@ -23,5 +24,3 @@ jobs:
         run: yarn
       - name: run the lint
         run: yarn lint
-      - name: run the build
-        run: yarn build
