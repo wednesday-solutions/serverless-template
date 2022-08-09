@@ -2,8 +2,8 @@ name: serverless-template-ci
 on:
   pull_request:
     branches:
-      - dev
       - main
+      - dev
 
 jobs:
   build:
