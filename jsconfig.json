@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"module": "CommonJS",
+		"target": "ES6",
+		"baseUrl": ".",
+		"paths": {
+			"@utils": ["./utils/index.js"],
+			"@utils/*": ["./utils/*"],
+			"@services/*": ["./services/*"]
+		}
+	},
+	"exclude": ["node_modules"],
+	"include": ["./functions", "./utils", "./services"]
+}

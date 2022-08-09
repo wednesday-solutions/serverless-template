@@ -1,0 +1,17 @@
+Resources:
+  ServerlessTemplateRole:
+    Type: AWS::IAM::Role
+    Properties:
+      Description: This is an example role for SLS todo
+      RoleName: ${self:service.name}-todo
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      ManagedPolicyArns:
+          - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
