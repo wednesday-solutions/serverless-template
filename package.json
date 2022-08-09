@@ -25,7 +25,16 @@
 		"@babel/runtime": "^7.15.4",
 		"axios": "^0.24.0",
 		"serverless-offline": "^8.1.0",
-		"source-map-support": "^0.5.19"
+		"source-map-support": "^0.5.19",
+		"lambda-log": "^3.1.0",
+		"@middy/core": "^2.5.3",
+		"@middy/do-not-wait-for-empty-event-loop": "^2.5.3",
+		"@middy/http-cors": "^2.5.4",
+		"@middy/http-json-body-parser": "^2.5.3",
+		"@middy/http-response-serializer": "^2.5.3",
+		"@middy/util": "^2.5.7",
+		"@middy/validator": "^2.5.3",
+		"middy-middleware-json-error-handler": "^3.0.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.11.4",

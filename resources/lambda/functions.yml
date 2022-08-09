@@ -1,0 +1,8 @@
+starterFunction:
+  handler: functions/starter-function/index.handler
+  role: ServerlessTemplateRole
+  events:
+    - http:
+        method: GET
+        path: /hello-world
+        cors: true
