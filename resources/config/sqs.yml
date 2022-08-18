@@ -1,0 +1,30 @@
+Resources:
+  sqsQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      ContentBasedDeduplication: true
+      DelaySeconds: 5
+      FifoQueue: true
+      QueueName: ${env:STAGE}_Hi.fifo
+      Tags:
+        - Key: environment
+          Value: ${env:STAGE}
+  # SQSPolicy:
+  #   Type: AWS::SQS::QueuePolicy
+  #   Properties:
+  #     Queues:
+  #       - !Ref sqsQueue
+  #     PolicyDocument:
+  #       Statement:
+  #         - Action:
+  #             - 'SQS:SendMessage'
+  #             - 'SQS:ReceiveMessage'
+  #             - 'SQS:ListQueues'
+  #           Effect: 'Allow'
+  #           Resource:
+  #             Fn::GetAtt:
+  #               - sqsQueue
+  #               - Arn
+  #           Principal:
+  #             Service:
+  #               - lambda.amazonaws.com

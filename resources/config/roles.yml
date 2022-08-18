@@ -14,4 +14,30 @@ Resources:
             Action:
               - sts:AssumeRole
       ManagedPolicyArns:
-          - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
+
+  SQSMessageRole:
+    Type: AWS::IAM::Role
+    Properties:
+      Description: Role to Send SQS messages from lambdas
+      RoleName: ${env:STAGE}-sqs-sendmessage-role
+      Policies:
+        - PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: 'Allow'
+                Action:
+                  - 'sqs:SendMessage'
+                  - 'sqs:ReceiveMessage'
+                Resource:
+                  Fn::GetAtt: [sqsQueue, Arn]
+          PolicyName: root
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'

@@ -6,3 +6,21 @@ starterFunction:
         method: GET
         path: /hello-world
         cors: true
+
+createToDo:
+  role:
+    - arn:aws:iam::172840532362:role/lambda-sqs-role
+  handler: functions/todo/create/index.handler
+  events:
+    - http:
+        method: POST
+        path: /todos
+
+todoConsumer:
+  handler: functions/todo/consumer/index.handler
+  role:
+    - arn:aws:iam::172840532362:role/lambda-sqs-role
+  events:
+    - http:
+        method: GET
+        path: /todos
