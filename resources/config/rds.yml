@@ -2,7 +2,7 @@ Resources:
   ServerlessTodoRdsCluster:
     Type: AWS::RDS::DBCluster
     Properties: 
-      DatabaseName: serverless-todo
+      DatabaseName: serverless_todo
       DBClusterIdentifier: serverless-Todo-rds-cluster
       DBClusterParameterGroupName:
          Ref: ServerlessTodoRdsClusterParameter
