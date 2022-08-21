@@ -3,8 +3,7 @@ Resources:
     Type: AWS::RDS::DBCluster
     Properties: 
       DatabaseName: serverless-todo
-      DBClusterIdentifier:
-         Ref: serverless-Todo-rds-cluster
+      DBClusterIdentifier: serverless-Todo-rds-cluster
       DBClusterParameterGroupName:
          Ref: ServerlessTodoRdsClusterParameter
       # DBSubnetGroupName: String   # need to update it
