@@ -16,7 +16,7 @@ Resources:
     Type: AWS::RDS::DBClusterParameterGroup
     Properties:
       Description: Parameter group for the Serverless Aurora RDS DB.
-      Family: "aurora-mysql5.7"
+      Family: "aurora-mysql8.0"
       Parameters:
         character_set_database: "utf8"
 
@@ -24,7 +24,7 @@ Resources:
     Type: AWS::RDS::DBParameterGroup
     Properties:
       Description: Parameter group for the Serverless Aurora RDS DB.
-      Family: "aurora-mysql5.7"
+      Family: "aurora-mysql8.0"
       Parameters:
         sql_mode: IGNORE_SPACE
         max_connections: 100
