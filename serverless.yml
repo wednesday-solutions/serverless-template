@@ -5,6 +5,8 @@ plugins:
   - serverless-webpack
   - serverless-offline
 
+useDotenv: true
+
 provider:
   name: aws
   timeout: ${env:TIMEOUT_SECONDS}
@@ -21,3 +23,4 @@ custom:
 functions: ${file(./resources/lambda/functions.yml)}
 resources:
   - ${file(./resources/config/roles.yml)}
+  - ${file(./resources/config/rds.yml)}
