@@ -4,7 +4,7 @@ Resources:
     Properties: 
       DatabaseName: serverless-todo
       DBClusterIdentifier:
-         Ref: ServerlessTodoRdsCluster
+         Ref: serverless-Todo-rds-cluster
       DBClusterParameterGroupName:
          Ref: ServerlessTodoRdsClusterParameter
       # DBSubnetGroupName: String   # need to update it
