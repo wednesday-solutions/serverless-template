@@ -21,3 +21,4 @@ custom:
 functions: ${file(./resources/lambda/functions.yml)}
 resources:
   - ${file(./resources/config/roles.yml)}
+  - ${file(./resources/config/rds.yml)}

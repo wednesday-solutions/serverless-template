@@ -1,0 +1,22 @@
+Resources:
+  ServerlessTodoRdsCluster:
+    Type: AWS::RDS::DBCluster
+    Properties: 
+      DatabaseName: serverless-todo
+      DBClusterIdentifier:
+         Ref: ServerlessTodoRdsCluster
+      DBClusterParameterGroupName:
+         Ref: ServerlessTodoRdsClusterParameter
+      # DBSubnetGroupName: String   # need to update it
+      Engine: aurora-mysql
+      EngineVersion: 8.0.mysql_aurora.3.02.0
+      MasterUsername: ${env:RDS_USERNAME}_${env:STAGE}  
+      MasterUserPassword: ${env:DB_PASSWORD} 
+    
+  ServerlessTodoRdsClusterParameter:
+    Type: AWS::RDS::DBClusterParameterGroup
+    Properties:
+      Description: Parameter group for the Serverless Aurora RDS DB.
+      Family: "aurora-mysql5.7"
+      Parameters:
+        character_set_database: "utf8"
