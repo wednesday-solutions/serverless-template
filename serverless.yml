@@ -5,6 +5,8 @@ plugins:
   - serverless-webpack
   - serverless-offline
 
+useDotenv: true
+
 provider:
   name: aws
   timeout: ${env:TIMEOUT_SECONDS}
