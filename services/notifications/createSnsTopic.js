@@ -14,7 +14,6 @@ export const createSnsTopic = async (topicName) => {
 
 	const config = {
 		/** input parameters for sns service configuration */
-
 		Name: topicName, // TOPIC_NAME
 	};
 	try {
