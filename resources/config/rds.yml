@@ -11,12 +11,7 @@ Resources:
       EngineVersion: 8.0.mysql_aurora.3.02.0
       MasterUsername: ${env:RDS_USERNAME}_${env:STAGE}  
       MasterUserPassword: ${env:DB_PASSWORD}
-      ScalingConfiguration:
-        AutoPause: true
-        MinCapacity: 1
-        MaxCapacity: 8
-        SecondsUntilAutoPause: "1000"
-
+  
   ServerlessTodoRdsInstance:
     Type: 'AWS::RDS::DBInstance'
     Properties:
