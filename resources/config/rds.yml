@@ -14,7 +14,7 @@ Resources:
       ScalingConfiguration:
         AutoPause: true
         MinCapacity: 1
-        MaxCapacity: 8
+        MaxCapacity: 6
         SecondsUntilAutoPause: "1000"
   
   SlsTodoRdsInstance:
@@ -22,7 +22,7 @@ Resources:
     Properties:
       DBInstanceIdentifier: sls-todo-instance
       Engine: "aurora-mysql"
-      EngineVersion: "5.7.mysql_aurora.2.07.1"
+      EngineVersion: "5.7.mysql_aurora.2.08.3"
       EngineMode: serverlesss
       DBClusterIdentifier:
         Ref: SlsTodoRdsCluster
