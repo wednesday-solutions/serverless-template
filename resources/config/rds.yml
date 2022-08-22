@@ -7,21 +7,26 @@ Resources:
       DBClusterParameterGroupName:
          Ref: ServerlessTodoRdsClusterParameter
       # DBSubnetGroupName: String   # need to update it
-      Engine: aurora-mysql
-      EngineVersion: 8.0.mysql_aurora.3.02.0
+      Engine: "aurora-mysql"
+      EngineVersion: "5.7.mysql_aurora.2.07.1"
       MasterUsername: ${env:RDS_USERNAME}_${env:STAGE}  
       MasterUserPassword: ${env:DB_PASSWORD}
+      ScalingConfiguration:
+        AutoPause: true
+        MinCapacity: 1
+        MaxCapacity: 8
+        SecondsUntilAutoPause: "1000"
   
   ServerlessTodoRdsInstance:
     Type: 'AWS::RDS::DBInstance'
     Properties:
       DBInstanceIdentifier: aurora-mysql-instance1
-      Engine: aurora-mysql
-      EngineVersion: 8.0.mysql_aurora.3.02.0
+      Engine: "aurora-mysql"
+      EngineVersion: "5.7.mysql_aurora.2.07.1"
       DBClusterIdentifier:
         Ref: ServerlessTodoRdsCluster
       PubliclyAccessible: 'true'
-      DBInstanceClass: db.t2.small
+      DBInstanceClass: db.t2.micro
     
   ServerlessTodoRdsClusterParameter:
     Type: AWS::RDS::DBClusterParameterGroup
