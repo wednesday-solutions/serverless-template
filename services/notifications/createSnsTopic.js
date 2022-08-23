@@ -19,7 +19,9 @@ export const createSnsTopic = async (topicName) => {
 	try {
 		const data = await snsClient.send(new CreateTopicCommand(config));
 		console.log('Successfully created a new SNS topic', data);
+		return data;
 	} catch (error) {
 		console.error('Failed to create a new SNS topic!', { error });
+		return { error: error.message };
 	}
 };
