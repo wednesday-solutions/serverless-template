@@ -7,10 +7,16 @@ const snsMock = mockClient(snsClient);
 
 describe('Tests for createSnsTopic method', () => {
 	let snsMockResponse;
+	let response;
 	const topicName = 'Test Topic';
 
 	beforeAll(() => {
 		snsMock.resolves({});
+	});
+
+	it('should return empty object if topicName is not passed', async () => {
+		response = await createSnsTopic();
+		expect(response).toEqual({});
 	});
 
 	it('should call the sns client with CreateTopicCommand', async () => {
@@ -19,7 +25,7 @@ describe('Tests for createSnsTopic method', () => {
 		};
 
 		snsMock.on(CreateTopicCommand).resolvesOnce(snsMockResponse);
-		const response = await createSnsTopic(topicName);
+		response = await createSnsTopic(topicName);
 		expect(response).toEqual(snsMockResponse);
 	});
 
@@ -27,7 +33,7 @@ describe('Tests for createSnsTopic method', () => {
 		const errorMessage = 'Error creating topic';
 		const error = new Error(errorMessage);
 		snsMock.on(CreateTopicCommand).rejects(error);
-		const response = await createSnsTopic(topicName);
+		response = await createSnsTopic(topicName);
 		expect(response.error).toEqual(errorMessage);
 	});
 });

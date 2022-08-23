@@ -10,7 +10,7 @@ export const snsClient = new SNSClient({ region: process.env.REGION });
  * @returns {any}
  */
 export const createSnsTopic = async (topicName) => {
-	if (!topicName) return;
+	if (!topicName) return {};
 
 	const config = {
 		/** input parameters for sns service configuration */
