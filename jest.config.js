@@ -4,6 +4,7 @@ module.exports = {
 		'!babel.config.js',
 		'!.eslintrc.js',
 		'!jest.config.js',
+		'!utils/*',
 		'!webpack.config.js',
 		'!coverage/**/*.js',
 		'!.webpack/**/*.*',

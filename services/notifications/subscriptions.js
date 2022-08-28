@@ -9,13 +9,15 @@ import { snsClient } from './snsClient';
  * @date 2022-08-28
  * @description This method is for creating a email protocol based subscription for a SNS Topic
  * @param {Object} params { email, topicArn } the email address to be subscribed and the topicArn of the SNS Topic
- * @returns {Object} if success, returns the success response from creating the subscription else will return an object with an error message associated to the key named error
+ * @returns {Object} if success, returns the success response from creating the subscription attached to a data key within the response object { data: ... }, else will return an object with an error message associated to the key named error { error: ... }
  */
 export const subscribeToEmail = async (params) => {
 	if (isEmpty(params)) return {};
 
 	if (!params?.email || !params.topicArn)
-		return CREATE_SUBSCRIPTION_CONSTANTS.correctParamsRequiredMessage;
+		return {
+			error: CREATE_SUBSCRIPTION_CONSTANTS.correctParamsRequiredMessage,
+		};
 
 	const { email, topicArn } = params;
 
@@ -29,7 +31,7 @@ export const subscribeToEmail = async (params) => {
 		console.log(
 			`Successfuly created a new subscription to the email address ${email}`
 		);
-		return data;
+		return { data };
 	} catch (error) {
 		console.error(`Failed to subscribe to email address: ${email}`, { error });
 		return { error: error.message };

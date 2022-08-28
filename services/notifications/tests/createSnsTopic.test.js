@@ -1,7 +1,8 @@
 import { mockClient } from 'aws-sdk-client-mock';
 import { CreateTopicCommand } from '@aws-sdk/client-sns';
 
-import { createSnsTopic, snsClient } from '../createSnsTopic';
+import { createSnsTopic } from '../createSnsTopic';
+import { snsClient } from '../snsClient';
 
 const snsMock = mockClient(snsClient);
 
