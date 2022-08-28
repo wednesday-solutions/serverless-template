@@ -2,6 +2,7 @@ import { mockClient } from 'aws-sdk-client-mock';
 import { SubscribeCommand } from '@aws-sdk/client-sns';
 
 import { CREATE_SUBSCRIPTION_CONSTANTS } from '@utils/constants/snsConstants';
+import { SNS_MOCK_RESPONSE } from '@utils/mockData/snsMockData';
 
 import { subscribeToEmail } from '../subscriptions';
 import { snsClient } from '../snsClient';
@@ -9,7 +10,6 @@ import { snsClient } from '../snsClient';
 const snsMock = mockClient(snsClient);
 
 describe('SNS serice subscription for a topic tests suite', () => {
-	// let snsMockResponse;
 	let response;
 
 	beforeAll(() => {
@@ -36,6 +36,11 @@ describe('SNS serice subscription for a topic tests suite', () => {
 			);
 		});
 
-		// it('should call the snsClient with SubscribeCommand', async () => {});
+		it('should call the snsClient with SubscribeCommand', async () => {
+			snsMock.on(SubscribeCommand).resolves(SNS_MOCK_RESPONSE);
+			response = await subscribeToEmail({ email, topicArn });
+			expect(response.data).toBeDefined();
+			expect(response.data).toEqual(SNS_MOCK_RESPONSE);
+		});
 	});
 });

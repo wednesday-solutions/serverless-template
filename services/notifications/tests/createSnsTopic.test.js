@@ -1,13 +1,14 @@
 import { mockClient } from 'aws-sdk-client-mock';
 import { CreateTopicCommand } from '@aws-sdk/client-sns';
 
+import { SNS_MOCK_RESPONSE } from '@utils/mockData/snsMockData';
+
 import { createSnsTopic } from '../createSnsTopic';
 import { snsClient } from '../snsClient';
 
 const snsMock = mockClient(snsClient);
 
 describe('Tests for createSnsTopic method', () => {
-	let snsMockResponse;
 	let response;
 	const topicName = 'Test Topic';
 
@@ -21,13 +22,9 @@ describe('Tests for createSnsTopic method', () => {
 	});
 
 	it('should call the sns client with CreateTopicCommand', async () => {
-		snsMockResponse = {
-			MessageId: '12345678-1111-2222-3333-111122223333',
-		};
-
-		snsMock.on(CreateTopicCommand).resolvesOnce(snsMockResponse);
+		snsMock.on(CreateTopicCommand).resolvesOnce(SNS_MOCK_RESPONSE);
 		response = await createSnsTopic(topicName);
-		expect(response).toEqual(snsMockResponse);
+		expect(response).toEqual(SNS_MOCK_RESPONSE);
 	});
 
 	it('should return error accordingly', async () => {
