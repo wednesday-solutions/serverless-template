@@ -1,7 +1,6 @@
-import { SNSClient, CreateTopicCommand } from '@aws-sdk/client-sns';
+import { CreateTopicCommand } from '@aws-sdk/client-sns';
 
-// create SNS service object instance
-export const snsClient = new SNSClient({ region: process.env.REGION });
+import { snsClient } from './snsClient';
 
 /**
  * @date 2022-08-22
