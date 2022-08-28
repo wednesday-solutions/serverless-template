@@ -31,10 +31,9 @@
 		"@middy/http-response-serializer": "^2.5.3",
 		"@middy/util": "^2.5.7",
 		"@middy/validator": "^2.5.3",
-		"axios": "^0.24.0",
+		"apisauce": "^2.1.6",
 		"lambda-log": "^3.1.0",
 		"middy-middleware-json-error-handler": "^3.0.0",
-		"serverless-offline": "^8.1.0",
 		"source-map-support": "^0.5.19"
 	},
 	"devDependencies": {
@@ -66,6 +65,7 @@
 		"regenerator-runtime": "^0.13.9",
 		"serverless": "^2.51.2",
 		"serverless-dotenv-plugin": "^3.0.0",
+		"serverless-offline": "^8.1.0",
 		"serverless-webpack": "^5.3.5",
 		"webpack": "^4.44.1",
 		"webpack-node-externals": "^2.5.2"
