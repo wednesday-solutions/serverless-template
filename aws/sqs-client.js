@@ -3,16 +3,21 @@ import {
 	SendMessageCommand,
 	SQSClient,
 } from '@aws-sdk/client-sqs';
+import logger from '@utils/logger';
 
 class Queue extends SQSClient {
-	constructor() {
+	constructor({ endpoint }) {
+		if (!endpoint) {
+			throw new Error('No endpoint provided for queue');
+		}
+
 		super({
-			endpoint:
-				'https://sqs.ap-south-1.amazonaws.com/172840532362/local_Hi.fifo',
+			endpoint,
 		});
 	}
 
 	enqueue(input) {
+		logger.debug(input);
 		const command = new SendMessageCommand(input);
 		return this.send(command);
 	}

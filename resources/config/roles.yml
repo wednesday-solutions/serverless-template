@@ -1,9 +1,9 @@
 Resources:
-  ServerlessTemplateRole:
+  ServerlessTemplateRole1:
     Type: AWS::IAM::Role
     Properties:
       Description: This is an example role for SLS todo
-      RoleName: ${self:service.name}-todo
+      RoleName: ${self:service}-todo1
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -16,22 +16,10 @@ Resources:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
 
-  SQSMessageRole:
+  ServerlessTemplateSQSRole:
     Type: AWS::IAM::Role
     Properties:
-      Description: Role to Send SQS messages from lambdas
-      RoleName: ${env:STAGE}-sqs-sendmessage-role
-      Policies:
-        - PolicyDocument:
-            Version: '2012-10-17'
-            Statement:
-              - Effect: 'Allow'
-                Action:
-                  - 'sqs:SendMessage'
-                  - 'sqs:ReceiveMessage'
-                Resource:
-                  Fn::GetAtt: [sqsQueue, Arn]
-          PolicyName: root
+      Path:
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -41,3 +29,6 @@ Resources:
                 - lambda.amazonaws.com
             Action:
               - 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
+        - 'arn:aws:sqs:${aws:region}:${aws:accountId}::local_todo.fifo.*'

@@ -1,4 +1,5 @@
-import { STATUS_CODES } from './constants';
+import createError from 'http-errors';
+import { HTTP_SUCCESS_CODES } from './constants';
 import { SuccessResponse, ErrorResponse } from './response';
 
 class LambdaCloser {
@@ -16,29 +17,35 @@ class LambdaCloser {
 
 	ok() {
 		return {
-			statusCode: STATUS_CODES.ok,
+			statusCode: HTTP_SUCCESS_CODES.ok,
+			body: this.getSuccessResponseBody(),
+		};
+	}
+
+	created() {
+		return {
+			statusCode: HTTP_SUCCESS_CODES.created,
 			body: this.getSuccessResponseBody(),
 		};
 	}
 
 	badRequest() {
 		return {
-			statusCode: STATUS_CODES.badRequest,
+			...new createError.BadRequest(),
 			body: this.getErrorResponseBody(),
 		};
 	}
 
 	notFound() {
 		return {
-			statusCode: STATUS_CODES.notFound,
+			...new createError.NotFound(),
 			body: this.getErrorResponseBody(),
 		};
 	}
 
-	error() {
-		console.error(this.data);
+	internalServerError() {
 		return {
-			statusCode: STATUS_CODES.error,
+			...new createError.InternalServerError(),
 			body: this.getErrorResponseBody(),
 		};
 	}

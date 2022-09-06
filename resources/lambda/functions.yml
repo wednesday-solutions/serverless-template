@@ -1,6 +1,6 @@
 starterFunction:
   handler: functions/starter-function/index.handler
-  role: ServerlessTemplateRole
+  role: ServerlessTemplateRole1
   events:
     - http:
         method: GET
@@ -8,9 +8,8 @@ starterFunction:
         cors: true
 
 createToDo:
-  role:
-    - arn:aws:iam::172840532362:role/lambda-sqs-role
   handler: functions/todo/create/index.handler
+  role: ServerlessTemplateSQSRole
   events:
     - http:
         method: POST
@@ -18,9 +17,10 @@ createToDo:
 
 todoConsumer:
   handler: functions/todo/consumer/index.handler
-  role:
-    - arn:aws:iam::172840532362:role/lambda-sqs-role
+  role: ServerlessTemplateSQSRole
   events:
-    - http:
-        method: GET
-        path: /todos
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - todoQueue
+            - Arn
