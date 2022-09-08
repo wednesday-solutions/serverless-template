@@ -1,17 +1,15 @@
-service:
-  name: ${env:NAME}
+service: ${env:NAME}
+useDotenv: true
+variablesResolutionMode: 20210326
+
 plugins:
-  - serverless-dotenv-plugin
   - serverless-webpack
   - serverless-offline
-
-useDotenv: true
 
 provider:
   name: aws
   timeout: ${env:TIMEOUT_SECONDS}
   runtime: nodejs14.x
-  stage: ${env:STAGE}
   region: ${env:REGION}
   versionFunctions: false
 package:
@@ -19,8 +17,12 @@ package:
 custom:
   urlPrefix: 'sls'
   webpack:
-    includeModules: true
+    includeModules:
+      forceExclude:
+        - '@aws-sdk/client-sqs'
+    packager: 'yarn'
 functions: ${file(./resources/lambda/functions.yml)}
 resources:
   - ${file(./resources/config/roles.yml)}
   - ${file(./resources/config/rds.yml)}
+  - ${file(./resources/config/sqs.yml)}

@@ -6,3 +6,21 @@ starterFunction:
         method: GET
         path: /hello-world
         cors: true
+
+createToDo:
+  handler: functions/todo/create/index.handler
+  role: ServerlessTemplateSQSRole
+  events:
+    - http:
+        method: POST
+        path: /todos
+
+todoConsumer:
+  handler: functions/todo/consumer/index.handler
+  role: ServerlessTemplateSQSRole
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - todoQueue
+            - Arn

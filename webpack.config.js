@@ -26,6 +26,7 @@ module.exports = {
 			'@utils': path.resolve(__dirname, 'utils/'),
 			'@services': path.resolve(__dirname, 'services/'),
 			'@mocks': path.resolve(__dirname, '__mocks__/'),
+			'@aws': path.resolve(__dirname, 'aws/'),
 		},
 		extensions: ['.js'],
 		mainFields: ['browser', 'jsnext:main', 'main'],
