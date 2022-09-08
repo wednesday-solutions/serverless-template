@@ -2,17 +2,26 @@ import createError from 'http-errors';
 import { HTTP_SUCCESS_CODES } from './constants';
 import { SuccessResponse, ErrorResponse } from './response';
 
+/**
+ *
+ * construct { message, data } for success responses
+ * construct { message, code } for error responses
+ *
+ */
 class LambdaCloser {
-	constructor(params) {
-		this.data = params;
+	constructor({ message, data, code }) {
+		if (!message && !data && !code) {
+			throw new Error('Close the lambda with atleast 1 response parameter');
+		}
+		this.responseData = { message, data, code };
 	}
 
 	getSuccessResponseBody() {
-		return new SuccessResponse(this.data);
+		return new SuccessResponse(this.responseData);
 	}
 
 	getErrorResponseBody() {
-		return new ErrorResponse(this.data);
+		return new ErrorResponse(this.responseData);
 	}
 
 	ok() {
