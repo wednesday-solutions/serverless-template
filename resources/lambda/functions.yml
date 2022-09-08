@@ -1,6 +1,6 @@
 starterFunction:
   handler: functions/starter-function/index.handler
-  role: ServerlessTemplateRole1
+  role: ServerlessTemplateRole
   events:
     - http:
         method: GET
