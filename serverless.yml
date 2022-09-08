@@ -1,5 +1,6 @@
 service: ${env:NAME}
 useDotenv: true
+variablesResolutionMode: 20210326
 
 plugins:
   - serverless-webpack
@@ -23,4 +24,5 @@ custom:
 functions: ${file(./resources/lambda/functions.yml)}
 resources:
   - ${file(./resources/config/roles.yml)}
+  - ${file(./resources/config/rds.yml)}
   - ${file(./resources/config/sqs.yml)}

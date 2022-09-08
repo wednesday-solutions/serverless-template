@@ -1,9 +1,9 @@
 Resources:
-  ServerlessTemplateRole1:
+  ServerlessTemplateRole:
     Type: AWS::IAM::Role
     Properties:
       Description: This is an example role for SLS todo
-      RoleName: ${self:service}-todo1
+      RoleName: ${self:service}-todo
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -16,10 +16,35 @@ Resources:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
 
+  AccessRDSPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      Description: Managed policy to provide access to the RDS
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: 'Allow'
+            Action:
+              - rds:*
+            Resource: '*'
+
+  LambdaRDSRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: ${self:service}-${sls:stage}-lambda-ddb-role
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - sts:AssumeRole
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+
   ServerlessTemplateSQSRole:
     Type: AWS::IAM::Role
     Properties:
-      Path:
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -31,4 +56,7 @@ Resources:
               - 'sts:AssumeRole'
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
-        - 'arn:aws:sqs:${aws:region}:${aws:accountId}::local_todo.fifo.*'
+        - !Sub
+          - 'arn:aws:sqs:${Region}:${AccountId}::local_todo.fifo.*'
+          - Region: ${aws:region}
+            AccountId: ${aws:accountId}
