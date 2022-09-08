@@ -1,0 +1,7 @@
+{
+	"bail": 1,
+	"verbose": true,
+	"moduleNameMapper": {
+		"^@utils/(.*)": "<rootDir>/utils/$1"
+	}
+}
