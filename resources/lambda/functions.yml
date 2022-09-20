@@ -15,12 +15,12 @@ createToDo:
         method: POST
         path: /todos
 
-todoConsumer:
-  handler: functions/todo/consumer/index.handler
-  role: ServerlessTemplateSQSRole
-  events:
-    - sqs:
-        arn:
-          Fn::GetAtt:
-            - todoQueue
-            - Arn
+# todoConsumer:
+#   handler: functions/todo/consumer/index.handler
+#   role: ServerlessTemplateSQSRole
+#   events:
+#     - sqs:
+#         arn:
+#           Fn::GetAtt:
+#             - todoQueue
+#             - Arn
