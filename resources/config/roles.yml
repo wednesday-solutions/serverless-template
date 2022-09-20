@@ -54,9 +54,6 @@ Resources:
                 - lambda.amazonaws.com
             Action:
               - 'sts:AssumeRole'
-              - 'sqs:ReceiveMessage'
-              - 'sqs:DeleteMessage'
-              - 'sqs:GetQueueAttributes'
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
         # - !Sub
