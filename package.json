@@ -20,6 +20,7 @@
 	"author": "deepak-wednesday",
 	"license": "ISC",
 	"dependencies": {
+		"@aws-sdk/client-ses": "^3.171.0",
 		"@babel/plugin-transform-regenerator": "^7.14.5",
 		"@babel/plugin-transform-runtime": "^7.15.0",
 		"@babel/runtime": "^7.15.4",
