@@ -1,44 +1,44 @@
-Resources:
-  ServerlessTodoRdsCluster:
-    Type: AWS::RDS::DBCluster
-    Properties: 
-      DatabaseName: serverless_todo_db
-      DBClusterIdentifier: sls-todo-rds-cluster
-      DBClusterParameterGroupName:
-         Ref: SlsTodoRdsClusterParameter
-      # DBSubnetGroupName: String   # need to update it
-      Engine: "aurora-mysql"
-      EngineVersion: "5.7.mysql_aurora.2.08.3"
-      MasterUsername: ${env:RDS_USERNAME}_${env:STAGE}  
-      MasterUserPassword: ${env:DB_PASSWORD}
+# Resources:
+#   ServerlessTodoRdsCluster:
+#     Type: AWS::RDS::DBCluster
+#     Properties: 
+#       DatabaseName: serverless_todo_db
+#       DBClusterIdentifier: sls-todo-rds-cluster
+#       DBClusterParameterGroupName:
+#          Ref: SlsTodoRdsClusterParameter
+#       # DBSubnetGroupName: String   # need to update it
+#       Engine: "aurora-mysql"
+#       EngineVersion: "5.7.mysql_aurora.2.08.3"
+#       MasterUsername: ${env:RDS_USERNAME}_${env:STAGE}  
+#       MasterUserPassword: ${env:DB_PASSWORD}
 
   
-  SlsTodoRdsInstance:
-    Type: 'AWS::RDS::DBInstance'
-    Properties:
-      DBInstanceIdentifier: sls-todo-instance
-      Engine: "aurora-mysql"
-      EngineVersion: "5.7.mysql_aurora.2.08.3"
-      DBClusterIdentifier:
-        Ref: SlsTodoRdsCluster
-      PubliclyAccessible: 'true'
-      DBInstanceClass: db.t2.small
+#   SlsTodoRdsInstance:
+#     Type: 'AWS::RDS::DBInstance'
+#     Properties:
+#       DBInstanceIdentifier: sls-todo-instance
+#       Engine: "aurora-mysql"
+#       EngineVersion: "5.7.mysql_aurora.2.08.3"
+#       DBClusterIdentifier:
+#         Ref: SlsTodoRdsCluster
+#       PubliclyAccessible: 'true'
+#       DBInstanceClass: db.t2.small
     
-  SlsTodoRdsClusterParameter:
-    Type: AWS::RDS::DBClusterParameterGroup
-    Properties:
-      Description: Parameter group for the SLS Aurora RDS DB.
-      Family: "aurora-mysql5.7"
-      Parameters:
-        character_set_database: "utf8"
+#   SlsTodoRdsClusterParameter:
+#     Type: AWS::RDS::DBClusterParameterGroup
+#     Properties:
+#       Description: Parameter group for the SLS Aurora RDS DB.
+#       Family: "aurora-mysql5.7"
+#       Parameters:
+#         character_set_database: "utf8"
 
-  # SlsTodoRdsClusterParameterGroup:
-  #   Type: AWS::RDS::DBParameterGroup
-  #   Properties:
-  #     Description: Parameter group for the Serverless Aurora RDS DB.
-  #     Family: "aurora-mysql5.7"
-  #     Parameters:
-  #       sql_mode: IGNORE_SPACE
-  #       max_connections: 100
-  #       wait_timeout: 900
-  #       interactive_timeout: 900
+#   # SlsTodoRdsClusterParameterGroup:
+#   #   Type: AWS::RDS::DBParameterGroup
+#   #   Properties:
+#   #     Description: Parameter group for the Serverless Aurora RDS DB.
+#   #     Family: "aurora-mysql5.7"
+#   #     Parameters:
+#   #       sql_mode: IGNORE_SPACE
+#   #       max_connections: 100
+#   #       wait_timeout: 900
+#   #       interactive_timeout: 900
