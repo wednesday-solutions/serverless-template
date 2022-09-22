@@ -4,8 +4,7 @@ Resources:
     Properties:
       DBSubnetGroupDescription: Group of private subnets for Aurora cluster.
       SubnetIds:
-        - ${env:SUBNET_ID_1}
-        - ${env:SUBNET_ID_2}
+        - ${env:SUBNET_ID}
   TodoDBSecurityGroup:
     Metadata:
       "aws:copilot:description": "A security group for your workload to access the DB cluster"
@@ -17,7 +16,7 @@ Resources:
         - ToPort: 3306
           FromPort: 3306
           IpProtocol: tcp
-          SourceSecurityGroupId: ${env:SECURITY_GROUP_ID_5}
+          SourceSecurityGroupId: ${env:SECURITY_GROUP_ID}
   TodoDBRDSCluster:
     Type: AWS::RDS::DBCluster
     Properties:
