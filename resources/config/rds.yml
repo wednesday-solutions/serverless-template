@@ -4,7 +4,8 @@ Resources:
     Properties:
       DBSubnetGroupDescription: Group of private subnets for Aurora cluster.
       SubnetIds:
-        - ${env:SUBNET_ID}
+        - ${env:SUBNET_ID_1}
+        - ${env:SUBNET_ID_2}
   TodoDBSecurityGroup:
     Metadata:
       "aws:copilot:description": "A security group for your workload to access the DB cluster"
