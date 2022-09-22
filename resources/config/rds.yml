@@ -25,7 +25,7 @@ Resources:
           "",
           [
             "{{resolve:secretsmanager:",
-            Fn::Ref: TodoClusterAuroraSecret,
+            Ref: TodoClusterAuroraSecret,
             ":SecretString:username}}",
           ],
         ]
@@ -34,7 +34,7 @@ Resources:
           "",
           [
             "{{resolve:secretsmanager:",
-            Fn::Ref: TodoClusterAuroraSecret,
+            Ref: TodoClusterAuroraSecret,
             ":SecretString:password}}",
           ],
         ]
@@ -85,9 +85,9 @@ Resources:
     Type: AWS::SecretsManager::SecretTargetAttachment
     Properties:
       SecretId: 
-        Fn::Ref: TodoClusterAuroraSecret
+        Ref: TodoClusterAuroraSecret
       TargetId: 
-        Fn::Ref: TodoDBRDSCluster
+        Ref: TodoDBRDSCluster
       TargetType: AWS::RDS::DBCluster
 Outputs:
   TodoRDSHost:
@@ -101,4 +101,4 @@ Outputs:
   TodoClusterSecret:
     Description: "The JSON secret that holds the database username and password. Fields are 'host', 'port', 'dbname', 'username', 'password', 'dbClusterIdentifier' and 'engine'"
     Value: 
-      Fn::Ref: TodoClusterAuroraSecret
+      Ref: TodoClusterAuroraSecret
