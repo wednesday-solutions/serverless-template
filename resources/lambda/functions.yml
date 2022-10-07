@@ -1,3 +1,28 @@
+postConfirmation:
+  handler: functions/post-confirmation/index.handler
+  role: lambdaRDSRole
+  dependsOn:
+    - CognitoUserPool
+  events:
+    - cognitoUserPool:
+        trigger: PostConfirmation # reference the cognito.yml
+        pool: ${self:custom.userPoolName}
+        existing: true
+  environment:
+    COGNITO_USER_POOL_ID: !Ref CognitoUserPool
+sendCustomEmailMessage:
+  handler: functions/custom-email-sender/index.handler
+  role: lambdaInvokeRole
+  dependsOn:
+    - CognitoUserPool
+  events:
+    - cognitoUserPool:
+        trigger: CustomMessage # reference the cognito.yml
+        pool: ${self:custom.userPoolName}
+        existing: true
+  environment:
+    COGNITO_USER_POOL_ID: !Ref CognitoUserPool
+
 starterFunction:
   handler: functions/starter-function/index.handler
   role: ServerlessTemplateRole

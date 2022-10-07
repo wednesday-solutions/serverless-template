@@ -32,6 +32,7 @@
 		"@middy/http-response-serializer": "^2.5.3",
 		"@middy/util": "^2.5.7",
 		"@middy/validator": "^2.5.3",
+		"amazon-cognito-identity-js": "^5.2.10",
 		"axios": "^0.24.0",
 		"http-errors": "^2.0.0",
 		"lambda-log": "^3.1.0",
