@@ -5,6 +5,7 @@ import { SNS_MOCK_RESPONSE } from '@utils/mockData/snsMockData';
 
 import { createSnsTopic } from '../createSnsTopic';
 import { snsClient } from '../snsClient';
+import { CREATE_SNS_TOPIC_CONSTANTS } from '@utils/constants/snsConstants';
 
 const snsMock = mockClient(snsClient);
 
@@ -17,8 +18,13 @@ describe('Tests for createSnsTopic method', () => {
 	});
 
 	it('should return empty object if topicName is not passed', async () => {
-		response = await createSnsTopic();
-		expect(response).toEqual({});
+		const error = new Error(
+			CREATE_SNS_TOPIC_CONSTANTS.topicNameNotProvidedErrorMessage
+		);
+
+		expect(async () => {
+			await createSnsTopic();
+		}).rejects.toThrowError(error);
 	});
 
 	it('should call the sns client with CreateTopicCommand', async () => {

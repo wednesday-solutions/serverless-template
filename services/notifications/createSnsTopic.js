@@ -1,5 +1,6 @@
 import { CreateTopicCommand } from '@aws-sdk/client-sns';
 
+import { CREATE_SNS_TOPIC_CONSTANTS } from '@utils/constants/snsConstants';
 import logger from '@utils/logger';
 
 import { snsClient } from './snsClient';
@@ -11,7 +12,10 @@ import { snsClient } from './snsClient';
  * @returns {any}
  */
 export const createSnsTopic = async (topicName) => {
-	if (!topicName) return {};
+	if (!topicName)
+		throw new Error(
+			CREATE_SNS_TOPIC_CONSTANTS.topicNameNotProvidedErrorMessage
+		);
 
 	const config = {
 		/** input parameters for sns service configuration */
