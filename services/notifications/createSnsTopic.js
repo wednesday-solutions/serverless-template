@@ -1,5 +1,7 @@
 import { CreateTopicCommand } from '@aws-sdk/client-sns';
 
+import logger from '@utils/logger';
+
 import { snsClient } from './snsClient';
 
 /**
@@ -17,10 +19,10 @@ export const createSnsTopic = async (topicName) => {
 	};
 	try {
 		const data = await snsClient.send(new CreateTopicCommand(config));
-		console.log('Successfully created a new SNS topic', data);
+		logger.info(data, 'Successfully created a new SNS topic');
 		return data;
 	} catch (error) {
-		console.error('Failed to create a new SNS topic!', { error });
+		logger.error({ error }, 'Failed to create a new SNS topic!');
 		return { error: error.message };
 	}
 };
