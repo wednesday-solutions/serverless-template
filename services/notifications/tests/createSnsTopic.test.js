@@ -17,7 +17,7 @@ describe('Tests for createSnsTopic method', () => {
 		snsMock.resolves({});
 	});
 
-	it('should return empty object if topicName is not passed', async () => {
+	it('should throw if topicName is not passed', async () => {
 		const error = new Error(
 			CREATE_SNS_TOPIC_CONSTANTS.topicNameNotProvidedErrorMessage
 		);

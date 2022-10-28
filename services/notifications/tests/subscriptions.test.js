@@ -20,18 +20,18 @@ describe('SNS serice subscription for a topic tests suite', () => {
 		const email = 'test@example.com';
 		const topicArn = 'test:topic:arn';
 
-		it('should return an empty object if no parameters are provided', async () => {
-			response = await subscribeToEmail();
-			expect(response).toEqual({});
+		it('should return throw if no parameters are provided', async () => {
+			expect(async () => {
+				await subscribeToEmail();
+			}).rejects.toThrowError(
+				CREATE_SUBSCRIPTION_CONSTANTS.emptyParamsPassedErrorMessage
+			);
 		});
 
 		it('should return a error message if correct params are not provided', async () => {
-			response = await subscribeToEmail({
-				emailAddress: email,
-				topic: topicArn,
-			});
-			expect(response.error).toBeDefined();
-			expect(response.error).toEqual(
+			expect(async () => {
+				await subscribeToEmail({ email: 'something' });
+			}).rejects.toThrowError(
 				CREATE_SUBSCRIPTION_CONSTANTS.correctParamsRequiredMessage
 			);
 		});

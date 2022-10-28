@@ -13,12 +13,13 @@ import { snsClient } from './snsClient';
  * @returns {Object} if success, returns the success response from creating the subscription attached to a data key within the response object { data: ... }, else will return an object with an error message associated to the key named error { error: ... }
  */
 export const subscribeToEmail = async (params) => {
-	if (isEmpty(params)) return {};
+	if (isEmpty(params))
+		throw new Error(
+			CREATE_SUBSCRIPTION_CONSTANTS.emptyParamsPassedErrorMessage
+		);
 
-	if (!params?.email || !params.topicArn)
-		return {
-			error: CREATE_SUBSCRIPTION_CONSTANTS.correctParamsRequiredMessage,
-		};
+	if (!params?.email || !params?.topicArn)
+		throw new Error(CREATE_SUBSCRIPTION_CONSTANTS.correctParamsRequiredMessage);
 
 	const { email, topicArn } = params;
 
