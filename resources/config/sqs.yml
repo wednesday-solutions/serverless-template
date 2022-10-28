@@ -1,0 +1,12 @@
+Resources:
+  todoQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      ContentBasedDeduplication: true
+      DelaySeconds: 5
+      FifoQueue: true
+      QueueName: ${sls:stage}_todo.fifo
+      VisibilityTimeout: 120
+      Tags:
+        - Key: environment
+          Value: ${sls:stage}

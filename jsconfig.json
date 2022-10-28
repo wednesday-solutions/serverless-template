@@ -6,7 +6,8 @@
 		"paths": {
 			"@utils": ["./utils/index.js"],
 			"@utils/*": ["./utils/*"],
-			"@services/*": ["./services/*"]
+			"@services/*": ["./services/*"],
+			"@aws/*": ["./aws/*"]
 		}
 	},
 	"exclude": ["node_modules"],
