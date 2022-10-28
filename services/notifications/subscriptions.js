@@ -2,6 +2,7 @@ import { isEmpty } from 'lodash';
 import { SubscribeCommand } from '@aws-sdk/client-sns';
 
 import { CREATE_SUBSCRIPTION_CONSTANTS } from '@utils/constants/snsConstants';
+import logger from '@utils/logger';
 
 import { snsClient } from './snsClient';
 
@@ -28,12 +29,12 @@ export const subscribeToEmail = async (params) => {
 			Endpoint: email,
 		};
 		const data = await snsClient.send(new SubscribeCommand(config));
-		console.log(
+		logger.info(
 			`Successfuly created a new subscription to the email address ${email}`
 		);
 		return { data };
 	} catch (error) {
-		console.error(`Failed to subscribe to email address: ${email}`, { error });
+		logger.error(`Failed to subscribe to email address: ${email}`, { error });
 		return { error: error.message };
 	}
 };
