@@ -20,7 +20,6 @@
 	"author": "deepak-wednesday",
 	"license": "ISC",
 	"dependencies": {
-		"@aws-sdk/client-ses": "^3.171.0",
 		"@babel/plugin-transform-regenerator": "^7.14.5",
 		"@babel/plugin-transform-runtime": "^7.15.0",
 		"@babel/runtime": "^7.15.4",
@@ -42,7 +41,9 @@
 		"source-map-support": "^0.5.19"
 	},
 	"devDependencies": {
+		"@aws-sdk/client-ses": "^3.192.0",
 		"@aws-sdk/client-sqs": "^3.163.0",
+		"@aws-sdk/client-ssm": "^3.199.0",
 		"@babel/core": "^7.11.4",
 		"@babel/preset-env": "^7.18.10",
 		"babel-eslint": "^10.1.0",
