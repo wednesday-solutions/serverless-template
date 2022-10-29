@@ -2,6 +2,24 @@
 	"bail": 1,
 	"verbose": true,
 	"moduleNameMapper": {
-		"^@utils/(.*)": "<rootDir>/utils/$1"
+		"@(utils|services|functions)(.*)$": "<rootDir>/$1/$2/"
+	},
+	"collectCoverageFrom": [
+		"./**/*.js",
+		"!babel.config.js",
+		"!.eslintrc.js",
+		"!jest.config.js",
+		"!utils/*",
+		"!webpack.config.js",
+		"!coverage/**/*.js",
+		"!.webpack/**/*.*"
+	],
+	"coverageThreshold": {
+		"global": {
+			"statements": 50,
+			"branches": 50,
+			"functions": 50,
+			"lines": 50
+		}
 	}
 }

@@ -56,7 +56,7 @@ Resources:
               - 'sts:AssumeRole'
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
-        - !Sub
-          - 'arn:aws:sqs:${Region}:${AccountId}::local_todo.fifo.*'
-          - Region: ${aws:region}
-            AccountId: ${aws:accountId}
+        # - Fn::Sub:
+        #   - 'arn:aws:sqs:${Region}:${AccountId}::local_todo.fifo.*'
+        #   - Region: ${aws:region}
+        #     AccountId: ${aws:accountId}
