@@ -4,7 +4,7 @@ export const formatEmailMessage = ({ message, subject }) => ({
 	Body: {
 		Text: {
 			Charset,
-			Data: message,
+			Data: message, //  text format body
 		},
 	},
 	Subject: {

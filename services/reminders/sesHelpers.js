@@ -1,26 +1,31 @@
 import { CloneReceiptRuleSetCommand } from '@aws-sdk/client-ses';
-import { CREATE_REMINDER_CONSTANTS } from '@utils/constants/sesConstants';
+import {
+	CREATE_REMINDER_CONSTANTS,
+	EMAIL_SSM_NAMES,
+} from '@utils/constants/sesConstants';
 import { formatEmailMessage } from '@utils';
 
-import { sesClient } from './snsClient';
+import { sesClient } from './sesClient';
+import { getParamsFromSSM } from '../ssm/ssmClient';
 
 export const subscribeToEmailService = async ({ message, subject }) => {
 	if (!message || !subject)
-		return {
-			error: CREATE_REMINDER_CONSTANTS.correctParamsRequiredMessage,
-		};
+		throw new Error(CREATE_REMINDER_CONSTANTS.correctParamsRequiredMessage);
 
-	const fromEmailAddress = process.env.VERIFIED_EMAIL_ID;
-	const recieverEmailAddress = process.env.RECIEVER_EMAIL_ID;
+	const emailsFromSSM = await getParamsFromSSM(EMAIL_SSM_NAMES);
 
+	if (emailsFromSSM.error)
+		throw new Error(CREATE_REMINDER_CONSTANTS.correctParamsRequiredMessage);
+
+	const emails = emailsFromSSM.data.map((emailObj) => emailObj.value);
 	try {
 		const formattedEmailMessage = formatEmailMessage({ message, subject });
 		const parameters = {
 			Destination: {
-				ToAddresses: [recieverEmailAddress],
+				ToAddresses: [emails[0]],
 			},
 			ReplyToAddresses: [],
-			Source: fromEmailAddress,
+			Source: emails[1],
 			Message: formattedEmailMessage,
 		};
 
