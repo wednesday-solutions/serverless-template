@@ -8,16 +8,22 @@ import { formatEmailMessage } from '@utils';
 import { sesClient } from './sesClient';
 import { getParamsFromSSM } from '../ssm/ssmClient';
 
+const { correctEmailsRequiredMessage } = CREATE_REMINDER_CONSTANTS;
+
 export const subscribeToEmailService = async ({ message, subject }) => {
 	if (!message || !subject)
 		throw new Error(CREATE_REMINDER_CONSTANTS.correctParamsRequiredMessage);
 
-	const emailsFromSSM = await getParamsFromSSM(EMAIL_SSM_NAMES);
+	const emailsFromSSM = await getParamsFromSSM(
+		EMAIL_SSM_NAMES,
+		correctEmailsRequiredMessage
+	);
 
 	if (emailsFromSSM.error)
 		throw new Error(CREATE_REMINDER_CONSTANTS.correctParamsRequiredMessage);
 
 	const emails = emailsFromSSM.data.map((emailObj) => emailObj.value);
+
 	try {
 		const formattedEmailMessage = formatEmailMessage({ message, subject });
 		const parameters = {

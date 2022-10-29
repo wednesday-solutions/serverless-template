@@ -1,29 +1,26 @@
 import { GetParametersCommand } from '@aws-sdk/client-ssm';
-
-import { CREATE_REMINDER_CONSTANTS } from '@utils/constants/sesConstants';
 import { ssmClient } from './ssmClient';
-
-const { correctEmailsRequiredMessage } = CREATE_REMINDER_CONSTANTS;
 
 /**
  * @description a function to fetch parameters stored in the parameter store
  * @param {array} paramNames - an array with names of variables to be fetched from
  *  parameter store; names should be same as the ones stored in parameter store
+ * @param {string} errorMessage -  error message to be returned in case of failure
  * @returns an object with "error" or "data" based on success or failure in fetching params
  */
-export async function getParamsFromSSM(paramNames) {
+export async function getParamsFromSSM(paramNames, errorMessage) {
 	const command = new GetParametersCommand({ Names: [...paramNames] });
 	const response = await ssmClient.send(command);
-	return handleSSMResponse(response, correctEmailsRequiredMessage);
+	return handleSSMResponse(response, errorMessage);
 }
 
-function handleSSMResponse(response, errorMessage) {
-	if (response.invalidParameters.length) {
+export function handleSSMResponse(response, errorMessage) {
+	if (response.InvalidParameters?.length) {
 		return { error: errorMessage };
 	}
-	const fornattedResponse = response.map((paramData) => ({
-		name: paramData.Parameters.Name,
-		value: paramData.Parameters.Value,
+	const formattedResponse = response.Parameters.map((paramData) => ({
+		name: paramData.Name,
+		value: paramData.Value,
 	}));
-	return { data: fornattedResponse };
+	return { data: formattedResponse };
 }
