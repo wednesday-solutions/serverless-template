@@ -14,7 +14,7 @@
 		"test:local": "jest --coverage",
 		"build": "sls package --stage=dev",
 		"deploy-dev": "sls deploy --stage=dev",
-		"start-offline": "yarn debug && sls offline start --stage=local",
+		"start-offline": "yarn debug && sls offline start --stage local --offline --verbose",
 		"debug": "export SLS_DEBUG=*"
 	},
 	"author": "deepak-wednesday",
@@ -71,7 +71,7 @@
 		"regenerator-runtime": "^0.13.9",
 		"serverless": "^2.51.2",
 		"serverless-dotenv-plugin": "^3.0.0",
-		"serverless-offline": "^11.2.1",
+		"serverless-offline": "^8.1.0",
 		"serverless-webpack": "^5.3.5",
 		"webpack": "^4.44.1",
 		"webpack-node-externals": "^2.5.2"
