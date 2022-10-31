@@ -1,6 +1,8 @@
 export const CREATE_REMINDER_CONSTANTS = {
 	correctParamsRequiredMessage:
 		'Please pass valid params ({message, subject}) to send reminders',
+	emptyParamsPassedErrorMessage:
+		'Please provide valid parameters to send reminders',
 	correctEmailsRequiredMessage:
 		'Please pass the correct "from" and "to" email addresses to send reminders',
 };

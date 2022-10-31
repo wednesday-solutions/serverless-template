@@ -36,6 +36,7 @@
 		"apisauce": "^2.1.6",
 		"http-errors": "^2.0.0",
 		"lambda-log": "^3.1.0",
+		"lodash": "^4.17.21",
 		"middy-middleware-json-error-handler": "^3.0.0",
 		"pino": "7",
 		"pino-lambda": "^4.0.0",

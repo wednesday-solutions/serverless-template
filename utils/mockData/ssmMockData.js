@@ -37,12 +37,10 @@ export const SSM_SUCCESS_DATA = {
 		data: [
 			{
 				name: EMAIL_SSM_NAMES[0],
-
 				value: 'test@wednesday.is',
 			},
 			{
 				name: EMAIL_SSM_NAMES[1],
-
 				value: 'test@wednesday.is',
 			},
 		],

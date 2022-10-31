@@ -9,9 +9,13 @@ import { ssmClient } from './ssmClient';
  * @returns an object with "error" or "data" based on success or failure in fetching params
  */
 export async function getParamsFromSSM(paramNames, errorMessage) {
-	const command = new GetParametersCommand({ Names: [...paramNames] });
-	const response = await ssmClient.send(command);
-	return handleSSMResponse(response, errorMessage);
+	try {
+		const command = new GetParametersCommand({ Names: [...paramNames] });
+		const response = await ssmClient.send(command);
+		return handleSSMResponse(response, errorMessage);
+	} catch (error) {
+		return { error: error?.message };
+	}
 }
 
 export function handleSSMResponse(response, errorMessage) {
