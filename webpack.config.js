@@ -18,6 +18,15 @@ module.exports = {
 					},
 				],
 			},
+			{
+				test: /\.(tsx?)$/,
+				use: [
+					{
+						loader: 'ts-loader',
+					},
+				],
+				exclude: /node_modules/,
+			},
 		],
 	},
 	resolve: {
@@ -28,7 +37,7 @@ module.exports = {
 			'@mocks': path.resolve(__dirname, '__mocks__/'),
 			'@aws': path.resolve(__dirname, 'aws/'),
 		},
-		extensions: ['.js'],
+		extensions: ['.js', '.ts', 'tsx'],
 		mainFields: ['browser', 'jsnext:main', 'main'],
 	},
 	output: {
