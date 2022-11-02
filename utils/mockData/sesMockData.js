@@ -5,7 +5,7 @@ const {
 	correctParamsRequiredMessage,
 } = CREATE_REMINDER_CONSTANTS;
 
-export const SES_SUCCESS_DATA = {
+const SuccessData = {
 	apiResponse: {
 		$metadata: {
 			httpStatusCode: 200,
@@ -24,26 +24,26 @@ export const SES_SUCCESS_DATA = {
 	},
 };
 
-export const SES_MISSING_PARAMS_DATA = {
+const MissingParamsData = {
 	functionResponse: {
 		error: emptyParamsPassedErrorMessage,
 	},
 };
 
-export const SES_PARTIAL_MISSING_PARAMS_DATA = {
+const PartialMissingParamsData = {
 	functionResponse: {
 		error: correctParamsRequiredMessage,
 	},
 };
 
-export const SES_WRONG_EMAILS_DATA = {
+const WrongEmailsData = {
 	apiResponse: { error: correctEmailsRequiredMessage },
 	functionResponse: {
 		error: correctEmailsRequiredMessage,
 	},
 };
 
-export const SES_FAILURE_DATA = {
+const FailureData = {
 	apiResponse: {
 		message: 'Unavailable Operation',
 		$fault: 'client',
@@ -61,56 +61,70 @@ export const SES_FAILURE_DATA = {
 	functionResponse: { error: 'Unavailable Operation' },
 };
 
-export const MOCK_TEXT_MESSAGE = 'This is the message body in text format.';
-export const MOCK_HTML_MESSAGE =
-	'<p>This is the message body in html format.</p>';
-export const MOCK_SUBJECT = 'Test email';
+const mockTextMessage = 'This is the message body in text format.';
+const mockHTMLMessage = '<p>This is the message body in html format.</p>';
+const mockSubject = 'Test email';
 
-export const MOCK_SEND_TEXT_EMAIL_CONTENT_DATA = {
+const mockSendTextEmailContentData = {
 	functionResponse: {
 		Body: {
 			Text: {
 				Charset: 'UTF-8',
-				Data: MOCK_TEXT_MESSAGE,
+				Data: mockTextMessage,
 			},
 		},
 		Subject: {
 			Charset: 'UTF-8',
-			Data: MOCK_SUBJECT,
+			Data: mockSubject,
 		},
 	},
 };
 
-export const MOCK_SEND_HTML_EMAIL_CONTENT_DATA = {
+const mockSendHTMLEmailContentData = {
 	isHtmlMessage: true,
 	functionResponse: {
 		Body: {
 			Html: {
 				Charset: 'UTF-8',
-				Data: MOCK_HTML_MESSAGE,
+				Data: mockHTMLMessage,
 			},
 		},
 		Subject: {
 			Charset: 'UTF-8',
-			Data: MOCK_SUBJECT,
+			Data: mockSubject,
 		},
 	},
 };
 
-export const MOCK_SEND_TEXT_EMAIL_BODY_DATA = {
+const mockSendTextEmailBodyData = {
 	functionResponse: {
 		Text: {
 			Charset: 'UTF-8',
-			Data: MOCK_TEXT_MESSAGE,
+			Data: mockTextMessage,
 		},
 	},
 };
-export const MOCK_SEND_HTML_EMAIL_BODY_DATA = {
+const mockSendHTMLEmailBodyData = {
 	isHtmlMessage: true,
 	functionResponse: {
 		Html: {
 			Charset: 'UTF-8',
-			Data: MOCK_HTML_MESSAGE,
+			Data: mockHTMLMessage,
 		},
 	},
+};
+
+export const SESMockData = {
+	SuccessData,
+	MissingParamsData,
+	PartialMissingParamsData,
+	WrongEmailsData,
+	FailureData,
+	mockTextMessage,
+	mockHTMLMessage,
+	mockSubject,
+	mockSendTextEmailContentData,
+	mockSendHTMLEmailContentData,
+	mockSendTextEmailBodyData,
+	mockSendHTMLEmailBodyData,
 };

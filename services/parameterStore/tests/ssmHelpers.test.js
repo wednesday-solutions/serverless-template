@@ -1,9 +1,6 @@
 import { mockClient } from 'aws-sdk-client-mock';
 import { GetParametersCommand } from '@aws-sdk/client-ssm';
-import {
-	SSM_SUCCESS_DATA,
-	SSM_FAILURE_DATA,
-} from '@utils/mockData/ssmMockData';
+import { SSMMockData } from '@utils/mockData/ssmMockData';
 import {
 	CREATE_REMINDER_CONSTANTS,
 	EMAIL_SSM_NAMES,
@@ -13,6 +10,7 @@ import { ssmClient } from '../ssmClient';
 import { getParamsFromSSM, handleSSMResponse } from '../ssmHelpers';
 
 const { correctEmailsRequiredMessage } = CREATE_REMINDER_CONSTANTS;
+const { SuccessData, failureData } = SSMMockData;
 
 describe('ssm helpers test suite', () => {
 	describe('getParamsFromSSM tests', () => {
@@ -21,7 +19,7 @@ describe('ssm helpers test suite', () => {
 			ssmMock = mockClient(ssmClient);
 		});
 		it('should handle case where ssm params exist as expected', async () => {
-			const { apiResponse, functionResponse } = SSM_SUCCESS_DATA;
+			const { apiResponse, functionResponse } = SuccessData;
 
 			ssmMock.on(GetParametersCommand).resolvesOnce(apiResponse);
 			const response = await getParamsFromSSM(
@@ -31,7 +29,7 @@ describe('ssm helpers test suite', () => {
 			expect(response).toEqual(functionResponse);
 		});
 		it('should handle case where ssm params do not exist as expected', async () => {
-			const { apiResponse, functionResponse } = SSM_FAILURE_DATA;
+			const { apiResponse, functionResponse } = failureData;
 
 			ssmMock.on(GetParametersCommand).resolvesOnce(apiResponse);
 			const response = await getParamsFromSSM(
@@ -43,7 +41,7 @@ describe('ssm helpers test suite', () => {
 	});
 	describe('handleSSMResponse tests', () => {
 		it('should handle case where response provided matches success scenario', () => {
-			const { apiResponse, functionResponse } = SSM_SUCCESS_DATA;
+			const { apiResponse, functionResponse } = SuccessData;
 
 			const response = handleSSMResponse(
 				apiResponse,
@@ -52,7 +50,7 @@ describe('ssm helpers test suite', () => {
 			expect(response).toEqual(functionResponse);
 		});
 		it('should handle case where response provided matches error scenario', () => {
-			const { apiResponse, functionResponse } = SSM_FAILURE_DATA;
+			const { apiResponse, functionResponse } = failureData;
 
 			const response = handleSSMResponse(
 				apiResponse,

@@ -3,7 +3,7 @@ import {
 	EMAIL_SSM_NAMES,
 } from '@utils/constants/sesConstants';
 
-export const SSM_SUCCESS_DATA = {
+export const SuccessData = {
 	apiResponse: {
 		$metadata: {
 			httpStatusCode: 200,
@@ -47,7 +47,7 @@ export const SSM_SUCCESS_DATA = {
 	},
 };
 
-export const SSM_FAILURE_DATA = {
+export const failureData = {
 	apiResponse: {
 		$metadata: {
 			httpStatusCode: 200,
@@ -72,3 +72,5 @@ export const SSM_FAILURE_DATA = {
 		error: CREATE_REMINDER_CONSTANTS.correctEmailsRequiredMessage,
 	},
 };
+
+export const SSMMockData = { SuccessData, failureData };
