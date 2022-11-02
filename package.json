@@ -36,13 +36,16 @@
 		"apisauce": "^2.1.6",
 		"http-errors": "^2.0.0",
 		"lambda-log": "^3.1.0",
+		"lodash": "^4.17.21",
 		"middy-middleware-json-error-handler": "^3.0.0",
 		"pino": "7",
 		"pino-lambda": "^4.0.0",
 		"source-map-support": "^0.5.19"
 	},
 	"devDependencies": {
+		"@aws-sdk/client-ses": "^3.192.0",
 		"@aws-sdk/client-sqs": "^3.163.0",
+		"@aws-sdk/client-ssm": "^3.199.0",
 		"@babel/core": "^7.11.4",
 		"@babel/preset-env": "^7.18.10",
 		"aws-sdk-client-mock": "^1.0.0",
