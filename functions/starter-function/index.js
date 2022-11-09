@@ -1,7 +1,7 @@
 import LambdaBuilder from '@utils/lambda-builder';
 import LambdaCloser from '@utils/lambda-closer';
 
-const baseHandler = async (event, { logger }) => {
+export const baseHandler = async (event) => {
 	const response = 'Hey Lambda !';
 	return new LambdaCloser({
 		message: response,

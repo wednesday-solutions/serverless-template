@@ -34,6 +34,8 @@
 		"@middy/util": "^2.5.7",
 		"@middy/validator": "^2.5.3",
 		"apisauce": "^2.1.6",
+		"aws-sdk-mock": "^5.8.0",
+		"dotenv": "^16.0.3",
 		"http-errors": "^2.0.0",
 		"lambda-log": "^3.1.0",
 		"lodash": "^4.17.21",
