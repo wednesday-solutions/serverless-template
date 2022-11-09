@@ -28,7 +28,7 @@ describe('ses helpers test suite', () => {
 		beforeEach(() => {
 			sesMock = mockClient(sesClient);
 		});
-		it('should handle case where sending email succeeds as expected', async () => {
+		it.skip('should handle case where sending email succeeds as expected', async () => {
 			const { apiResponse, functionResponse } = SuccessData;
 
 			sesMock.on(SendEmailCommand).resolvesOnce(apiResponse);
@@ -62,7 +62,7 @@ describe('ses helpers test suite', () => {
 			const response = await sendEmail({ message: textMessage, subject });
 			expect(response).toEqual(functionResponse);
 		});
-		it('should handle case where sending email fails as expected', async () => {
+		it.skip('should handle case where sending email fails as expected', async () => {
 			const { apiResponse, functionResponse } = FailureData;
 
 			sesMock.on(SendEmailCommand).rejectsOnce(apiResponse);
