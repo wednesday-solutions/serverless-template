@@ -2,6 +2,7 @@ import { mockClient } from 'aws-sdk-client-mock';
 import { SendEmailCommand } from '@aws-sdk/client-ses';
 
 import { SESMockData } from '@utils/mockData/sesMockData';
+import { SSMMockData } from '@utils/mockData/ssmMockData';
 import * as ssmUtils from '@services/parameterStore/ssmHelpers';
 
 import { sesClient } from '../sesClient';
@@ -21,6 +22,9 @@ const {
 	mockSendTextEmailBodyData,
 	mockSendHTMLEmailBodyData,
 } = SESMockData;
+const {
+	SuccessData: { functionResponse: ssmFunctionResponse },
+} = SSMMockData;
 
 describe('ses helpers test suite', () => {
 	describe('sendEmail tests', () => {
@@ -28,10 +32,14 @@ describe('ses helpers test suite', () => {
 		beforeEach(() => {
 			sesMock = mockClient(sesClient);
 		});
+
 		it('should handle case where sending email succeeds as expected', async () => {
 			const { apiResponse, functionResponse } = SuccessData;
-
+			jest
+				.spyOn(ssmUtils, 'getParamsFromSSM')
+				.mockResolvedValueOnce(ssmFunctionResponse);
 			sesMock.on(SendEmailCommand).resolvesOnce(apiResponse);
+
 			const response = await sendEmail({ message: textMessage, subject });
 			expect(response).toEqual(functionResponse);
 		});
@@ -64,8 +72,11 @@ describe('ses helpers test suite', () => {
 		});
 		it('should handle case where sending email fails as expected', async () => {
 			const { apiResponse, functionResponse } = FailureData;
-
+			jest
+				.spyOn(ssmUtils, 'getParamsFromSSM')
+				.mockResolvedValueOnce(ssmFunctionResponse);
 			sesMock.on(SendEmailCommand).rejectsOnce(apiResponse);
+
 			const response = await sendEmail({ message: textMessage, subject });
 			expect(response).toEqual(functionResponse);
 		});
