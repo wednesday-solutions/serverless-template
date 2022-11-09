@@ -12,7 +12,6 @@ export async function getParamsFromSSM(paramNames, errorMessage) {
 	try {
 		const command = new GetParametersCommand({ Names: [...paramNames] });
 		const response = await ssmClient.send(command);
-		console.log({ response });
 		return handleSSMResponse(response, errorMessage);
 	} catch (error) {
 		return { error: error?.message };
