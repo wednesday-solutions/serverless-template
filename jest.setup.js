@@ -13,7 +13,6 @@ beforeEach(() => {
 	jest.resetModules();
 	process.env = {
 		...OLD_ENV,
-		REGION: 'ap-south-1',
 	};
 	AWSMock.setSDKInstance(AWS);
 });
