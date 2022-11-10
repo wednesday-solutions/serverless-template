@@ -2,6 +2,7 @@ import LambdaBuilder from '@utils/lambda-builder';
 import LambdaCloser from '@utils/lambda-closer';
 
 import TodoQueue from '../todo-queue';
+import { createTodoValidator } from './createTodoSchema';
 
 const createTodo = async (event, { logger }) => {
 	const { title, description } = event.body;
@@ -20,5 +21,5 @@ const createTodo = async (event, { logger }) => {
 };
 
 export const handler = new LambdaBuilder(createTodo)
-	.buildBasicMiddlewares()
+	.buildBasicMiddlewares(createTodoValidator)
 	.getLambdaHandler();
