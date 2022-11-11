@@ -11,13 +11,19 @@ const createTodo = async (event, { logger }) => {
 		title,
 		description,
 	};
-
-	const response = await new TodoQueue().enqueu(todo);
-	logger.info(response);
-	return new LambdaCloser({
-		message: 'created',
-		data: todo,
-	}).ok();
+	try {
+		const response = await new TodoQueue().enqueu(todo);
+		logger.info(response);
+		return new LambdaCloser({
+			message: 'created',
+			data: todo,
+		}).ok();
+	} catch (error) {
+		logger.info(error);
+		return new LambdaCloser({
+			code: 'E1',
+		}).badRequest();
+	}
 };
 
 export const handler = new LambdaBuilder(createTodo)

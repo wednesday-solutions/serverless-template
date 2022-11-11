@@ -31,7 +31,7 @@ class LambdaBuilder {
 		this.addEventNormalizer();
 		this.addErrorLogger();
 		this.addLogger();
-		this.errorHandler();
+		this.validationError();
 		this.addResponseSerializer();
 		return this;
 	}
@@ -91,6 +91,18 @@ class LambdaBuilder {
 				event.response = new LambdaCloser({
 					message: event.error.message,
 				}).internalServerError();
+			},
+		});
+		return this;
+	}
+
+	validationError() {
+		this.middifiedHandler.use({
+			onError: async (event) => {
+				event.response = new LambdaCloser({
+					message: event.error.details,
+					code: 'E3',
+				}).badRequest();
 			},
 		});
 		return this;
