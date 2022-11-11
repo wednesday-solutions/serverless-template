@@ -1,5 +1,6 @@
 import pino from 'pino';
 
+// eslint-disable-next-line import/no-mutable-exports
 let logger = console;
 
 export const initializeLogger = (destination) => {

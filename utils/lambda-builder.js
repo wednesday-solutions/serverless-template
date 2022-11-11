@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import middy from '@middy/core';
 import doNotWaitForEmptyEventLoop from '@middy/do-not-wait-for-empty-event-loop';
 import errorLogger from '@middy/error-logger';
@@ -5,6 +6,10 @@ import httpEventNormalizer from '@middy/http-event-normalizer';
 import jsonBodyParser from '@middy/http-json-body-parser';
 import httpResponseSerializer from '@middy/http-response-serializer';
 import { lambdaRequestTracker, pinoLambdaDestination } from 'pino-lambda';
+import {
+	closeDatabaseConnection,
+	reuseDatabaseConnection,
+} from '../src/drivers/sequelize';
 import LambdaCloser from './lambda-closer';
 
 import { initializeLogger } from './logger';
@@ -93,6 +98,17 @@ class LambdaBuilder {
 			},
 		});
 		return this;
+	}
+
+	addDatabaseConnection() {
+		this.middifiedHandler.use({
+			before: async () => {
+				await reuseDatabaseConnection();
+			},
+			after: async () => {
+				await closeDatabaseConnection();
+			},
+		});
 	}
 }
 
