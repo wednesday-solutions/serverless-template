@@ -6,6 +6,7 @@ import jsonBodyParser from '@middy/http-json-body-parser';
 import httpResponseSerializer from '@middy/http-response-serializer';
 import { lambdaRequestTracker, pinoLambdaDestination } from 'pino-lambda';
 import LambdaCloser from './lambda-closer';
+import { schemaValidationMiddleware } from './middleWares/schemaValidationMiddleware';
 
 import { initializeLogger } from './logger';
 
@@ -23,15 +24,15 @@ class LambdaBuilder {
 	 * @documentation Find more middlewares here
 	 **  https://middy.js.org/docs/middlewares/intro
 	 */
-	buildBasicMiddlewares() {
+	buildBasicMiddlewares(rules) {
 		this.addJSONBodyParser();
+		this.addValidationMiddleware(rules);
 		this.addEmptyEventLoopSkip();
 		this.addEventNormalizer();
 		this.addErrorLogger();
 		this.addLogger();
-		this.errorHandler();
+		this.validationError();
 		this.addResponseSerializer();
-
 		return this;
 	}
 
@@ -92,6 +93,23 @@ class LambdaBuilder {
 				}).internalServerError();
 			},
 		});
+		return this;
+	}
+
+	validationError() {
+		this.middifiedHandler.use({
+			onError: async (event) => {
+				event.response = new LambdaCloser({
+					message: event.error.details,
+					code: 'E3',
+				}).badRequest();
+			},
+		});
+		return this;
+	}
+
+	addValidationMiddleware(rules) {
+		this.middifiedHandler.use(schemaValidationMiddleware(rules));
 		return this;
 	}
 }
