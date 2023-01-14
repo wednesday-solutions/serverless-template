@@ -21,8 +21,8 @@ jobs:
         run: |
           npm cache clean --force
       - name: install dependencies
-        run: yarn
+        run: npm
       - name: run the lint
-        run: yarn lint
+        run: npm lint
       - name: Test
-        run: yarn test
+        run: npm test
