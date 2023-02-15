@@ -1,0 +1,3 @@
+export const SNS_MOCK_RESPONSE = {
+	MessageId: '12345678-1111-2222-3333-111122223333',
+};

@@ -19,12 +19,6 @@ module.exports = {
 				'no-return-assign': 'off',
 			},
 		},
-		{
-			files: 'functions/**/index.js',
-			rules: {
-				'import/prefer-default-export': 'off',
-			},
-		},
 	],
 	settings: {
 		'import/resolver': {
@@ -38,5 +32,5 @@ module.exports = {
 		ecmaVersion: 'latest',
 		sourceType: 'module',
 	},
-	rules: {},
+	rules: { 'import/prefer-default-export': 'off' },
 };

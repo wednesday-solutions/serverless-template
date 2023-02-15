@@ -11,10 +11,10 @@ jobs:
       matrix:
         node-version: [14.x]
     steps:
-      - uses: actions/checkout@v2
-      - name: Get branch name
-        id: vars
-        run: echo ::set-output name=stage::${GITHUB_REF#refs/*/}
+      # - uses: actions/checkout@v2
+      # - name: Get branch name
+      #   id: vars
+      #   run: echo ::set-output name=stage::${GITHUB_REF#refs/*/}
       - name: Set env.ENVIRONMENT_NAME
         run: |
           if [[ ${{steps.vars.outputs.stage}} == 'dev' ]]; then
@@ -28,8 +28,9 @@ jobs:
       - name: Install dependencies
         run: pnpm i
 
-      - name: Deploy
-        run: pnpm deploy:dev
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      # - name: Deploy
+      #   run: pnpm deploy:dev
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

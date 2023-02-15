@@ -3,6 +3,7 @@ import LambdaCloser from '@utils/lambda-closer';
 import { createTodo } from '@src/interface-adaptors/daos/todo';
 
 // import TodoQueue from '../todo-queue';
+import createTodoValidator from './createTodoSchema';
 
 const create = async (event, { logger }) => {
 	const { title, description } = event.body;
@@ -11,17 +12,22 @@ const create = async (event, { logger }) => {
 	// 	title,
 	// 	description,
 	// };
-
-	const newTodo = await createTodo({ title, description });
-
-	// await new TodoQueue().enqueu(todo);
-	logger.info(newTodo);
-	return new LambdaCloser({
-		message: 'created',
-		data: newTodo,
-	}).ok();
+	try {
+		const newTodo = await createTodo({ title, description });
+		// const response = await new TodoQueue().enqueu(todo);
+		// logger.info(response);
+		return new LambdaCloser({
+			message: 'created',
+			data: newTodo,
+		}).ok();
+	} catch (error) {
+		logger.info(error);
+		return new LambdaCloser({
+			code: 'E1',
+		}).badRequest();
+	}
 };
 
 export const handler = new LambdaBuilder(create)
-	.buildBasicMiddlewares()
+	.buildBasicMiddlewares(createTodoValidator)
 	.getLambdaHandler();

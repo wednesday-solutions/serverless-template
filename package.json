@@ -18,7 +18,7 @@
 		"build": "sls package --stage=dev",
 		"deploy:dev": "sls deploy --stage=dev",
 		"-----------dev-----------": "",
-		"start:offline": "pnpm debug && sls offline start --stage=local",
+		"start:offline": "pnpm debug && sls offline start --stage local --verbose",
 		"debug": "export SLS_DEBUG=*",
 		"local:db:up": "docker compose up -d",
 		"model:generate": "npx sequelize-cli model:generate"
@@ -29,6 +29,7 @@
 	"author": "deepak-wednesday",
 	"license": "ISC",
 	"dependencies": {
+		"@aws-sdk/client-sns": "^3.154.0",
 		"@babel/plugin-transform-regenerator": "^7.14.5",
 		"@babel/plugin-transform-runtime": "^7.15.0",
 		"@babel/runtime": "^7.15.4",
@@ -44,7 +45,10 @@
 		"axios": "^0.24.0",
 		"eslint-import-resolver-webpack": "^0.13.2",
 		"http-errors": "^2.0.0",
+		"joi": "^17.7.1",
 		"lambda-log": "^3.1.0",
+		"lodash": "^4.17.21",
+		"middy-middleware-json-error-handler": "^3.0.0",
 		"mysql2": "^3.1.2",
 		"pino": "7",
 		"pino-lambda": "^4.0.0",
@@ -53,9 +57,12 @@
 		"source-map-support": "^0.5.19"
 	},
 	"devDependencies": {
+		"@aws-sdk/client-ses": "^3.192.0",
 		"@aws-sdk/client-sqs": "^3.163.0",
+		"@aws-sdk/client-ssm": "^3.199.0",
 		"@babel/core": "^7.11.4",
 		"@babel/preset-env": "^7.18.10",
+		"aws-sdk-client-mock": "^1.0.0",
 		"babel-eslint": "^10.1.0",
 		"babel-jest": "^27.2.1",
 		"babel-loader": "^8.1.0",
@@ -83,6 +90,7 @@
 		"sequelize-cli": "^6.6.0",
 		"serverless": "^2.51.2",
 		"serverless-dotenv-plugin": "^3.0.0",
+		"serverless-offline": "^8.1.0",
 		"serverless-webpack": "^5.3.5",
 		"webpack": "^4.44.1",
 		"webpack-node-externals": "^2.5.2"
