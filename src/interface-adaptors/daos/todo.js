@@ -3,16 +3,12 @@
  */
 
 import Todo from '@src/entities/todos';
-import TodoModel from '../../drivers/models/todo';
+import { getModels } from '@src/drivers/models/index';
 
-export const createTodo = ({ title, description }) => {
-	TodoModel.create(Todo({ title, description }));
-};
+export const createTodo = async ({ title, description }) =>
+	getModels().Todo.create(Todo({ title, description }));
 
-export const updateTodo = ({ title, description, id }) => {
-	TodoModel.update(id, Todo({ title, description }));
-};
+export const updateTodo = ({ title, description, id }) =>
+	getModels().Todo.update(id, Todo({ title, description }));
 
-export const findAllTodos = () => {
-	TodoModel.findAll();
-};
+export const findAllTodos = () => getModels().Todo.findAll();

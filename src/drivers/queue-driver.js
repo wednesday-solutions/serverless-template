@@ -2,6 +2,7 @@
  * a driver to use SQS or any message broker.
  */
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { SQS } from 'aws-sdk';
 
 const pushToQueue = (queueId, message) => {

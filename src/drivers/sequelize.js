@@ -1,5 +1,6 @@
 import logger from '@utils/logger';
 import Sequelize from 'sequelize';
+import intialiseModels from './models';
 
 let sequelize = null;
 
@@ -11,6 +12,11 @@ let sequelize = null;
 
 async function loadSequelize() {
 	const sqlize = new Sequelize({
+		database: process.env.DATABASE_NAME,
+		password: process.env.PASSWORD,
+		username: process.env.DATABASE_USERNAME,
+		host: process.env.HOST,
+		dialect: 'mysql',
 		pool: {
 			max: 2,
 			min: 0,
@@ -25,33 +31,36 @@ async function loadSequelize() {
 }
 
 export const connectToDatabase = async () => {
-	if (!sequelize) {
-		sequelize = await loadSequelize();
-	} else {
-		sequelize.connectionManager.initPools();
+	try {
+		if (!sequelize) {
+			sequelize = await loadSequelize();
+		} else {
+			sequelize.connectionManager.initPools();
 
-		if (
-			Object.prototype.hasOwnProperty.call(
-				sequelize.connectionManager,
-				'getConnection'
-			)
-		) {
-			delete sequelize.connectionManager.getConnection;
+			if (
+				Object.prototype.hasOwnProperty.call(
+					sequelize.connectionManager,
+					'getConnection'
+				)
+			) {
+				delete sequelize.connectionManager.getConnection;
+			}
 		}
+		intialiseModels(sequelize);
+		return sequelize;
+	} catch (error) {
+		logger.error(error);
+		return null;
 	}
-	return sequelize;
 };
 
 export const closeDatabaseConnection = async () => {
-	if (!sequelize) {
-		logger.error('sequelize is not initialised');
+	try {
+		if (!sequelize) {
+			logger.error('sequelize is not initialised');
+		}
+		sequelize.connectionManager.close();
+	} catch (error) {
+		logger.error(error);
 	}
-	sequelize.connectionManager.close();
 };
-
-export function getSequelize() {
-	if (!sequelize) {
-		logger.error('sequelize is not initialized');
-	}
-	return sequelize;
-}

@@ -8,7 +8,7 @@ import httpResponseSerializer from '@middy/http-response-serializer';
 import { lambdaRequestTracker, pinoLambdaDestination } from 'pino-lambda';
 import {
 	closeDatabaseConnection,
-	reuseDatabaseConnection,
+	connectToDatabase,
 } from '../src/drivers/sequelize';
 import LambdaCloser from './lambda-closer';
 
@@ -36,6 +36,7 @@ class LambdaBuilder {
 		this.addLogger();
 		this.errorHandler();
 		this.addResponseSerializer();
+		this.addDatabaseConnection();
 
 		return this;
 	}
@@ -103,7 +104,7 @@ class LambdaBuilder {
 	addDatabaseConnection() {
 		this.middifiedHandler.use({
 			before: async () => {
-				await reuseDatabaseConnection();
+				await connectToDatabase();
 			},
 			after: async () => {
 				await closeDatabaseConnection();

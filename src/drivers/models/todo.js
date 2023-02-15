@@ -1,9 +1,17 @@
-/**
- *  Create the ORM model for the base entity
- */
+const { Model } = require('sequelize');
 
-import { getSequelize } from '@src/drivers/sequelize';
+const initialiseTodo = (sequelize, DataTypes) => {
+	class Todo extends Model {}
+	Todo.init(
+		{
+			title: DataTypes.STRING,
+		},
+		{
+			sequelize,
+			modelName: 'Todo',
+		}
+	);
+	return Todo;
+};
 
-const TodoModel = getSequelize().define({});
-
-export default TodoModel;
+export default initialiseTodo;
