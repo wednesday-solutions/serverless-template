@@ -8,7 +8,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     volumes:
-      - buildd_db:/var/lib/mysql
+      - sls_template_local:/var/lib/mysql
     ports:
       - 3306:3306
     environment:
@@ -16,4 +16,4 @@ services:
       MYSQL_DATABASE: sls_template_local
 
 volumes:
-  buildd_db:
+  sls_template_local:
