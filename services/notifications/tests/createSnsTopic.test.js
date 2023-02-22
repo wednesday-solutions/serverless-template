@@ -2,8 +2,8 @@ import { mockClient } from 'aws-sdk-client-mock';
 import { CreateTopicCommand } from '@aws-sdk/client-sns';
 
 import { SNS_MOCK_RESPONSE } from '@utils/mockData/snsMockData';
-
 import { CREATE_SNS_TOPIC_CONSTANTS } from '@utils/constants/snsConstants';
+
 import { createSnsTopic } from '../createSnsTopic';
 import { snsClient } from '../snsClient';
 
