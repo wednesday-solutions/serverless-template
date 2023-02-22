@@ -2,6 +2,34 @@
 
 This is serverless template. This will help you get started with serverless architecture.
 
+# Development
+
+## Local DB setup
+
+To setup up the database locally run<sup>\*</sup>:
+
+```sh
+pnpm local:db:up
+```
+
+- requires docker
+
+## Creating Models
+
+To create a new Model Test with name of type string, run:
+
+```sh
+pnpm model:generate --name Test --attributes name:string
+```
+
+## Running migrations
+
+To run migrations, run:
+
+```sh
+pnpm db:migrate
+```
+
 # Lambda Builder
 
 Build a handler for your lambda with a set of basic middy middlewares.

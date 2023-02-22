@@ -5,10 +5,11 @@ specifiers:
   '@aws-sdk/client-sns': ^3.154.0
   '@aws-sdk/client-sqs': ^3.163.0
   '@aws-sdk/client-ssm': ^3.199.0
-  '@babel/core': ^7.11.4
+  '@babel/core': ^7.20.12
   '@babel/plugin-transform-regenerator': ^7.14.5
   '@babel/plugin-transform-runtime': ^7.15.0
   '@babel/preset-env': ^7.18.10
+  '@babel/register': ^7.21.0
   '@babel/runtime': ^7.15.4
   '@middy/core': ^2.5.3
   '@middy/do-not-wait-for-empty-event-loop': ^2.5.3
@@ -98,6 +99,7 @@ devDependencies:
   '@aws-sdk/client-ssm': 3.272.0
   '@babel/core': 7.20.12
   '@babel/preset-env': 7.20.2_@babel+core@7.20.12
+  '@babel/register': 7.21.0_@babel+core@7.20.12
   aws-sdk-client-mock: 1.0.0
   babel-eslint: 10.1.0_eslint@8.34.0
   babel-jest: 27.5.1_@babel+core@7.20.12
@@ -2633,6 +2635,20 @@ packages:
       '@babel/plugin-transform-dotall-regex': 7.18.6_@babel+core@7.20.12
       '@babel/types': 7.20.7
       esutils: 2.0.3
+    dev: true
+
+  /@babel/register/7.21.0_@babel+core@7.20.12:
+    resolution: {integrity: sha512-9nKsPmYDi5DidAqJaQooxIhsLJiNMkGr8ypQ8Uic7cIox7UCDsM7HuUGxdGT7mSDTYbqzIdsOWzfBton/YJrMw==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.20.12
+      clone-deep: 4.0.1
+      find-cache-dir: 2.1.0
+      make-dir: 2.1.0
+      pirates: 4.0.5
+      source-map-support: 0.5.21
     dev: true
 
   /@babel/regjsgen/0.8.0:
@@ -5558,6 +5574,15 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
+    dev: true
+
+  /clone-deep/4.0.1:
+    resolution: {integrity: sha512-neHB9xuzh/wk0dIHweyAXv2aPGZIVk3pLMe+/RNzINf17fe0OG96QroktYAUm7SM1PBnzTabaLboqqxDyMU+SQ==}
+    engines: {node: '>=6'}
+    dependencies:
+      is-plain-object: 2.0.4
+      kind-of: 6.0.3
+      shallow-clone: 3.0.1
     dev: true
 
   /clone-response/1.0.3:
@@ -11374,6 +11399,13 @@ packages:
     dependencies:
       inherits: 2.0.4
       safe-buffer: 5.2.1
+
+  /shallow-clone/3.0.1:
+    resolution: {integrity: sha512-/6KqX+GVUdqPuPPd2LxDDxzX6CAbjJehAAOKlNpqqUpAqPM6HeL8f+o3a+JsyGjn2lv0WY8UsTgUJjU9Ok55NA==}
+    engines: {node: '>=8'}
+    dependencies:
+      kind-of: 6.0.3
+    dev: true
 
   /shebang-command/1.2.0:
     resolution: {integrity: sha512-EV3L1+UQWGor21OmnvojK36mhg+TyIKDh3iFBKBohr5xeXIhNBcx8oWdgkTEEQ+BEFFYdLRuqMfd5L84N1V5Vg==}
