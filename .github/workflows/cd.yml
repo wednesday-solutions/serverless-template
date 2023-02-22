@@ -11,6 +11,14 @@ jobs:
       matrix:
         node-version: [14.x]
     steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6.32.9
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+          cache: 'pnpm'
       # - uses: actions/checkout@v2
       # - name: Get branch name
       #   id: vars
@@ -27,8 +35,6 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm i
-
-
       # - name: Deploy
       #   run: pnpm deploy:dev
       #   env:
