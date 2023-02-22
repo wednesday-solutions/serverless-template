@@ -16,6 +16,37 @@ const {
 	correctParamsRequiredMessage,
 } = CREATE_REMINDER_CONSTANTS;
 
+export function formatEmailBody({ message, isHtmlMessage = false }) {
+	if (isHtmlMessage) {
+		return {
+			Html: {
+				Charset,
+				Data: message,
+			},
+		};
+	}
+	return {
+		Text: {
+			Charset,
+			Data: message,
+		},
+	};
+}
+
+export function formatEmailContent({
+	message,
+	subject,
+	isHtmlMessage = false,
+}) {
+	return {
+		Body: formatEmailBody({ message, isHtmlMessage }),
+		Subject: {
+			Charset,
+			Data: subject,
+		},
+	};
+}
+
 export async function sendEmail(params) {
 	if (isEmpty(params)) return { error: emptyParamsPassedErrorMessage };
 
@@ -54,35 +85,4 @@ export async function sendEmail(params) {
 	} catch (error) {
 		return { error: error.message };
 	}
-}
-
-export function formatEmailContent({
-	message,
-	subject,
-	isHtmlMessage = false,
-}) {
-	return {
-		Body: formatEmailBody({ message, isHtmlMessage }),
-		Subject: {
-			Charset,
-			Data: subject,
-		},
-	};
-}
-
-export function formatEmailBody({ message, isHtmlMessage = false }) {
-	if (isHtmlMessage) {
-		return {
-			Html: {
-				Charset,
-				Data: message,
-			},
-		};
-	}
-	return {
-		Text: {
-			Charset,
-			Data: message,
-		},
-	};
 }

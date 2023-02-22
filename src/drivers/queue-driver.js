@@ -3,7 +3,7 @@
  */
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { SQS } from 'aws-sdk';
+import { SQS } from '@aws-sdk/client-sqs';
 
 const pushToQueue = (queueId, message) => {
 	const queue = new SQS(queueId);

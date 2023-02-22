@@ -1,6 +1,17 @@
 import { GetParametersCommand } from '@aws-sdk/client-ssm';
 import { ssmClient } from './ssmClient';
 
+export function handleSSMResponse(response, errorMessage) {
+	if (response.InvalidParameters?.length) {
+		return { error: errorMessage };
+	}
+	const formattedResponse = response.Parameters.map((paramData) => ({
+		name: paramData.Name,
+		value: paramData.Value,
+	}));
+	return { data: formattedResponse };
+}
+
 /**
  * @description a function to fetch parameters stored in the parameter store
  * @param {array} paramNames - an array with names of variables to be fetched from
@@ -16,15 +27,4 @@ export async function getParamsFromSSM(paramNames, errorMessage) {
 	} catch (error) {
 		return { error: error?.message };
 	}
-}
-
-export function handleSSMResponse(response, errorMessage) {
-	if (response.InvalidParameters?.length) {
-		return { error: errorMessage };
-	}
-	const formattedResponse = response.Parameters.map((paramData) => ({
-		name: paramData.Name,
-		value: paramData.Value,
-	}));
-	return { data: formattedResponse };
 }

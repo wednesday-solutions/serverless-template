@@ -1,6 +1,8 @@
 import { snakeCase } from 'lodash';
 
+// TODO: refactor this
 export const mapKeysDeep = (obj, fn) =>
+	// eslint-disable-next-line no-nested-ternary
 	Array.isArray(obj)
 		? obj.map((val) => mapKeysDeep(val, fn))
 		: typeof obj === 'object'
