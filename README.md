@@ -7,6 +7,7 @@ This is serverless template. This will help you get started with serverless arch
 Build a handler for your lambda with a set of basic middy middlewares.
 
 ## Usage
+
 Create a new handler with the basic middlewares
 
 ```javascript
@@ -66,13 +67,13 @@ const response = new LambdaCloser({
 	message: 'response message'
 }).ok();
 
-Object.is(response, {
+expect(response).toEqual({
 	statusCode: 200,
 	body: {
 		data: {...},
 		message: 'response message'
 	},
-}); // true
+}); //true
 ```
 
 #### 201
@@ -83,7 +84,7 @@ const response = new LambdaCloser({
 	message: 'response message'
 }).created();
 
-Object.is(response, {
+expect(response).toEqual({
 	statusCode: 201,
 	body: {
 		data: {...},
@@ -113,7 +114,7 @@ const response = new LambdaCloser({
 	code: 'E1',
 }).badRequest();
 
-Object.is(response, {
+expect(response).toEqual({
 	statusCode: 400,
 	body: {
 		message: 'Custom error message',

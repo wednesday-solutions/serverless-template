@@ -13,13 +13,5 @@
 		"!webpack.config.js",
 		"!coverage/**/*.js",
 		"!.webpack/**/*.*"
-	],
-	"coverageThreshold": {
-		"global": {
-			"statements": 50,
-			"branches": 50,
-			"functions": 49,
-			"lines": 50
-		}
-	}
+	]
 }

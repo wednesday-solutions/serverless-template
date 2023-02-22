@@ -7,9 +7,9 @@
 			"@utils": ["./utils/index.js"],
 			"@utils/*": ["./utils/*"],
 			"@services/*": ["./services/*"],
-			"@aws/*": ["./aws/*"]
+			"@aws/*": ["./aws/*"],
+			"@src/*": ["./src/*"]
 		}
 	},
-	"exclude": ["node_modules"],
-	"include": ["./functions", "./utils", "./services"]
+	"exclude": ["node_modules"]
 }

@@ -3,6 +3,22 @@ import { isEmpty } from 'lodash';
 
 import { transformToSnakeCase } from '@utils';
 
+function handleValidationError(errorObj) {
+	const error = createError(400, 'Bad Request', {});
+	if (errorObj.message) {
+		error.details = {
+			message: errorObj.message,
+		};
+		throw error;
+	}
+
+	error.details = errorObj.error.details.map((detail) => ({
+		message: detail.message,
+		path: detail?.path,
+	}));
+	throw error;
+}
+
 export const schemaValidationMiddleware = (
 	schema,
 	body,
@@ -25,20 +41,5 @@ export const schemaValidationMiddleware = (
 			},
 		};
 	}
+	return {};
 };
-
-function handleValidationError(errorObj) {
-	const error = createError(400, 'Bad Request', {});
-	if (errorObj.message) {
-		error.details = {
-			message: errorObj.message,
-		};
-		throw error;
-	}
-
-	error.details = errorObj.error.details.map((detail) => ({
-		message: detail.message,
-		path: detail?.path,
-	}));
-	throw error;
-}

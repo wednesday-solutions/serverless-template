@@ -3,7 +3,7 @@ Resources:
     Type: AWS::IAM::Role
     Properties:
       Description: This is an example role for SLS todo
-      RoleName: ${self:service}-todo
+      RoleName: ${self:service}-todo-lambda-role
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:

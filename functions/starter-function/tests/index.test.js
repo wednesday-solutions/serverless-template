@@ -1,5 +1,5 @@
-import { baseHandler } from '../index';
 import { StarterFunctionSuccessMessage } from '@utils/mockData/starterFunctionMockData';
+import { baseHandler } from '../index';
 
 describe('agree terms function tests', () => {
 	afterEach(() => {

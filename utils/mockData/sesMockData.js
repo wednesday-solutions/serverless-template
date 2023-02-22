@@ -1,4 +1,5 @@
 import { CREATE_REMINDER_CONSTANTS } from '@utils/constants/sesConstants';
+
 const {
 	correctEmailsRequiredMessage,
 	emptyParamsPassedErrorMessage,
@@ -114,7 +115,7 @@ const mockSendHTMLEmailBodyData = {
 	},
 };
 
-export const SESMockData = {
+export default {
 	SuccessData,
 	MissingParamsData,
 	PartialMissingParamsData,

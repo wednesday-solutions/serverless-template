@@ -1,7 +1,7 @@
 import { mockClient } from 'aws-sdk-client-mock';
 import { SendEmailCommand } from '@aws-sdk/client-ses';
 
-import { SESMockData } from '@utils/mockData/sesMockData';
+import SESMockData from '@utils/mockData/sesMockData';
 import { SSMMockData } from '@utils/mockData/ssmMockData';
 import * as ssmUtils from '@services/parameterStore/ssmHelpers';
 
