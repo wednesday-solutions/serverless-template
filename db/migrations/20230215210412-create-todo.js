@@ -8,7 +8,14 @@ module.exports = {
 				primaryKey: true,
 				type: Sequelize.INTEGER,
 			},
+			uuid: {
+				type: Sequelize.STRING(36),
+				allowNull: true,
+			},
 			title: {
+				type: Sequelize.STRING,
+			},
+			description: {
 				type: Sequelize.STRING,
 			},
 			createdAt: {
