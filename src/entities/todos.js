@@ -1,4 +1,12 @@
-const Todo = ({ title, description, createdAt, updatedAt, deletedAt }) => ({
+const Todo = ({
+	uuid,
+	title,
+	description,
+	createdAt,
+	updatedAt,
+	deletedAt,
+}) => ({
+	uuid,
 	title,
 	description,
 	createdAt,

@@ -6,14 +6,14 @@ import { createTodo } from '@src/interface-adaptors/daos/todo';
 import createTodoValidator from './createTodoSchema';
 
 const create = async (event, { logger }) => {
-	const { title, description } = event.body;
+	const { title, description, uuid } = event.body;
 	// const todo = {
 	// 	id: event.requestContext.requestId,
 	// 	title,
 	// 	description,
 	// };
 	try {
-		const newTodo = await createTodo({ title, description });
+		const newTodo = await createTodo({ uuid, title, description });
 		// const response = await new TodoQueue().enqueu(todo);
 		// logger.info(response);
 		return new LambdaCloser({
