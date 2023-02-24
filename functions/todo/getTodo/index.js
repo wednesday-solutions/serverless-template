@@ -9,7 +9,7 @@ import getTodoValidator from './getTodoSchema';
 const getTodo = async (event, { logger }) => {
 	const { uuid } = event.queryStringParameters;
 	try {
-		const todoList = await findByUuid({ uuid });
+		const todoList = await findByUuid(uuid);
 		if (isEmpty(todoList)) {
 			return new LambdaCloser({
 				code: 'E4',
