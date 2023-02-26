@@ -22,6 +22,15 @@ getTodo:
         method: GET
         path: /todos
 
+dailyCron:
+  handler: functions/daily-cron/index.handler
+  role: ServerlessTemplateRole
+  events:
+    - schedule:
+        name: daily-cron-12am
+        description: A CRON that runs every day at 12am
+        rate: rate(24 hours)
+
 # todoConsumer:
 #   handler: functions/todo/consumer/index.handler
 #   role: ServerlessTemplateSQSRole
