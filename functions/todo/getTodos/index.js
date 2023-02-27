@@ -6,7 +6,7 @@ import { findByUuid } from '@src/interface-adaptors/daos/todo';
 // import TodoQueue from '../todo-queue';
 import getTodoValidator from './getTodoSchema';
 
-const getTodo = async (event, { logger }) => {
+const getTodos = async (event, { logger }) => {
 	const { uuid } = event.queryStringParameters;
 	try {
 		const todoList = await findByUuid(uuid);
@@ -28,6 +28,6 @@ const getTodo = async (event, { logger }) => {
 	}
 };
 
-export const handler = new LambdaBuilder(getTodo)
+export const handler = new LambdaBuilder(getTodos)
 	.buildBasicMiddlewares(getTodoValidator)
 	.getLambdaHandler();
