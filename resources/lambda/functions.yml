@@ -15,7 +15,7 @@ createToDo:
         method: POST
         path: /todos
 getTodo:
-  handler: functions/todo/getTodo/index.handler
+  handler: functions/todo/getTodos/index.handler
   role: ServerlessTemplateSQSRole
   events:
     - http:
