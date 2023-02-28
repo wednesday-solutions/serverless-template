@@ -21,7 +21,7 @@ const getTodos = async (event, { logger }) => {
 			data: todoList,
 		}).ok();
 	} catch (error) {
-		logger.info(error);
+		logger.error('error', error);
 		return new LambdaCloser({
 			code: 'E1',
 		}).badRequest();
