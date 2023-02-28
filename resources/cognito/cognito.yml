@@ -1,0 +1,31 @@
+Resources:
+CognitoUserPool:
+  Type: AWS::Cognito::UserPool
+  Properties:
+    UserPoolName: sls-todo-${env:STAGE}-user-pool
+    UsernameAttributes:
+      - email
+
+CognitoUserPoolClient:
+  Type: AWS::Cognito::UserPoolClient
+  Properties:
+    ClientName: ${env:STAGE}-user-pool-client
+    UserPoolId:
+      Ref: CognitoUserPool
+    AllowedOAuthFlowsUserPoolClient: true
+    AllowedOAuthScopes:
+      - email
+    SupportedIdentityProviders:
+      - COGNITO
+    AllowedOAuthFlows:
+      - implicit
+    CallbackURLs:
+      - http://localhost:3000
+    DefaultRedirectURI: http://localhost:3000
+
+CognitoUserPoolDomain:
+  Type: AWS::Cognito::UserPoolDomain
+  Properties:
+    Domain: slstodoauth-${env:STAGE}
+    UserPoolId:
+    Ref: CognitoUserPool
