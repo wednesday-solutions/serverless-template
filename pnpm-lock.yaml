@@ -20,6 +20,7 @@ specifiers:
   '@middy/http-response-serializer': ^2.5.3
   '@middy/util': ^2.5.7
   '@middy/validator': ^2.5.3
+  aws-sdk: ^2.1325.0
   aws-sdk-client-mock: ^1.0.0
   axios: ^0.24.0
   babel-eslint: ^10.1.0
@@ -79,6 +80,7 @@ dependencies:
   '@middy/http-response-serializer': 2.5.7
   '@middy/util': 2.5.7
   '@middy/validator': 2.5.7
+  aws-sdk: 2.1325.0
   axios: 0.24.0
   eslint-import-resolver-webpack: 0.13.2_f61a00ba30bf5306dd1fc1c0bf18d74d
   http-errors: 2.0.0
@@ -4398,8 +4400,8 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /aws-sdk/2.1315.0:
-    resolution: {integrity: sha512-fDlK3iqA0bpXW6azVBAB8RTKhJ5YUjfe6sqKQF1lKT2cYT5qU4rtH5qUlMixlWkb8oKeSMA2voW3wZZtSpBFKQ==}
+  /aws-sdk/2.1325.0:
+    resolution: {integrity: sha512-ztg9HG5aoUHTprY+/eqjqb25E4joCgz+8ToxsP4OSKFQCtaBcF6my03j4e/J2j3fmpPifJnZSPMu4kV7DBj8WA==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
@@ -11244,7 +11246,7 @@ packages:
       '@hapi/boom': 9.1.4
       '@hapi/h2o2': 9.1.0
       '@hapi/hapi': 20.3.0
-      aws-sdk: 2.1315.0
+      aws-sdk: 2.1325.0
       boxen: 5.1.2
       chalk: 4.1.2
       cuid: 2.1.8
@@ -11318,7 +11320,7 @@ packages:
       ajv: 6.12.6
       ajv-keywords: 3.5.2_ajv@6.12.6
       archiver: 5.3.1
-      aws-sdk: 2.1315.0
+      aws-sdk: 2.1325.0
       bluebird: 3.7.2
       boxen: 5.1.2
       cachedir: 2.3.0

@@ -43,6 +43,7 @@
 		"@middy/http-response-serializer": "^2.5.3",
 		"@middy/util": "^2.5.7",
 		"@middy/validator": "^2.5.3",
+		"aws-sdk": "^2.1325.0",
 		"axios": "^0.24.0",
 		"eslint-import-resolver-webpack": "^0.13.2",
 		"http-errors": "^2.0.0",
