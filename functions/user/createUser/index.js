@@ -1,25 +1,26 @@
 import LambdaBuilder from '@utils/lambda-builder';
 import LambdaCloser from '@utils/lambda-closer';
-import { createTodo } from '@src/interface-adaptors/daos/todo';
+import { createUser } from '@src/interface-adaptors/daos/user';
 
-import createTodoValidator from './createTodoSchema';
+import createUserValidator from './createUserSchema';
 
 const create = async (event, { logger }) => {
-	const { title, description, uuid } = event.body;
+	const { uuid, name } = event.body;
 	try {
-		const newTodo = await createTodo({ uuid, title, description });
+		const newUser = await createUser({ uuid, name });
+
 		return new LambdaCloser({
-			message: 'created',
-			data: newTodo,
+			message: 'User Created',
+			data: newUser,
 		}).ok();
 	} catch (error) {
 		logger.error('error', error);
 		return new LambdaCloser({
-			code: 'E1',
+			code: 'E5',
 		}).badRequest();
 	}
 };
 
 export const handler = new LambdaBuilder(create)
-	.buildBasicMiddlewares(createTodoValidator)
+	.buildBasicMiddlewares(createUserValidator)
 	.getLambdaHandler();

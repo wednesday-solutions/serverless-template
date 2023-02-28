@@ -15,12 +15,28 @@ createToDo:
         method: POST
         path: /todos
 getTodo:
-  handler: functions/todo/getTodo/index.handler
+  handler: functions/todo/getTodos/index.handler
   role: ServerlessTemplateSQSRole
   events:
     - http:
         method: GET
         path: /todos
+
+createUser:
+  handler: functions/user/createUser/index.handler
+  role: ServerlessTemplateSQSRole
+  events:
+    - http:
+        method: POST
+        path: /user
+
+getUser:
+  handler: functions/user/getUser/index.handler
+  role: ServerlessTemplateSQSRole
+  events:
+    - http:
+        method: GET
+        path: /user
 
 dailyCron:
   handler: functions/daily-cron/index.handler

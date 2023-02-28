@@ -1,6 +1,6 @@
 const { Model } = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
+const initialiseUser = (sequelize, DataTypes) => {
 	class User extends Model {
 		static associate(models) {
 			User.hasMany(models.Todo, {
@@ -21,3 +21,5 @@ module.exports = (sequelize, DataTypes) => {
 	);
 	return User;
 };
+
+export default initialiseUser;
