@@ -1,3 +1,16 @@
+postConfirmation:
+  handler: functions/cognito-triggers/post-confirmation/index.handler
+  role: LambdaRDSRole
+  dependsOn:
+    - CognitoUserPool
+  events:
+    - cognitoUserPool:
+        trigger: PostConfirmation
+        pool: ${self:custom.userPoolName}
+        existing: true
+  environment:
+    COGNITO_USER_POOL_ID: ${file(./scripts/get-cognito-host.js)}
+    
 starterFunction:
   handler: functions/starter-function/index.handler
   role: ServerlessTemplateRole
