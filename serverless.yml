@@ -26,3 +26,4 @@ resources:
   # - ${file(./resources/config/roles.yml)}
   # - ${file(./resources/config/rds.yml)}
   # - ${file(./resources/config/sqs.yml)}
+  # ${file(./resources/cognito/cognito.yml)}
