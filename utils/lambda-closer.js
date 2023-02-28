@@ -1,6 +1,7 @@
 import createError from 'http-errors';
 import { HTTP_SUCCESS_CODES } from './constants';
-import { SuccessResponse, ErrorResponse } from './response';
+import ErrorResponse from './error-response';
+import SuccessResponse from './success-response';
 
 /**
  *

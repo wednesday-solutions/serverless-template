@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import middy from '@middy/core';
 import doNotWaitForEmptyEventLoop from '@middy/do-not-wait-for-empty-event-loop';
 import errorLogger from '@middy/error-logger';
@@ -5,7 +6,12 @@ import httpEventNormalizer from '@middy/http-event-normalizer';
 import jsonBodyParser from '@middy/http-json-body-parser';
 import httpResponseSerializer from '@middy/http-response-serializer';
 import { lambdaRequestTracker, pinoLambdaDestination } from 'pino-lambda';
+import {
+	closeDatabaseConnection,
+	connectToDatabase,
+} from '../src/drivers/sequelize';
 import LambdaCloser from './lambda-closer';
+import { schemaValidationMiddleware } from './middleWares/schemaValidationMiddleware';
 
 import { initializeLogger } from './logger';
 
@@ -23,14 +29,16 @@ class LambdaBuilder {
 	 * @documentation Find more middlewares here
 	 **  https://middy.js.org/docs/middlewares/intro
 	 */
-	buildBasicMiddlewares() {
+	buildBasicMiddlewares(rules) {
 		this.addJSONBodyParser();
+		this.addValidationMiddleware(rules);
 		this.addEmptyEventLoopSkip();
 		this.addEventNormalizer();
 		this.addErrorLogger();
 		this.addLogger();
-		this.errorHandler();
+		this.validationError();
 		this.addResponseSerializer();
+		this.addDatabaseConnection();
 
 		return this;
 	}
@@ -92,6 +100,35 @@ class LambdaBuilder {
 				}).internalServerError();
 			},
 		});
+		return this;
+	}
+
+	addDatabaseConnection() {
+		this.middifiedHandler.use({
+			before: async () => {
+				await connectToDatabase();
+			},
+			after: async () => {
+				await closeDatabaseConnection();
+			},
+		});
+		return this;
+	}
+
+	validationError() {
+		this.middifiedHandler.use({
+			onError: async (event) => {
+				event.response = new LambdaCloser({
+					message: event.error.details,
+					code: 'E3',
+				}).badRequest();
+			},
+		});
+		return this;
+	}
+
+	addValidationMiddleware(rules) {
+		this.middifiedHandler.use(schemaValidationMiddleware(rules));
 		return this;
 	}
 }

@@ -1,3 +1,16 @@
+postConfirmation:
+  handler: functions/cognito-triggers/post-confirmation/index.handler
+  role: LambdaRDSRole
+  dependsOn:
+    - CognitoUserPool
+  events:
+    - cognitoUserPool:
+        trigger: PostConfirmation
+        pool: ${self:custom.userPoolName}
+        existing: true
+  environment:
+    COGNITO_USER_POOL_ID: ${file(./scripts/get-cognito-host.js)}
+    
 starterFunction:
   handler: functions/starter-function/index.handler
   role: ServerlessTemplateRole
@@ -14,6 +27,38 @@ createToDo:
     - http:
         method: POST
         path: /todos
+getTodo:
+  handler: functions/todo/getTodos/index.handler
+  role: ServerlessTemplateSQSRole
+  events:
+    - http:
+        method: GET
+        path: /todos
+
+createUser:
+  handler: functions/user/createUser/index.handler
+  role: ServerlessTemplateSQSRole
+  events:
+    - http:
+        method: POST
+        path: /user
+
+getUser:
+  handler: functions/user/getUser/index.handler
+  role: ServerlessTemplateSQSRole
+  events:
+    - http:
+        method: GET
+        path: /user
+
+dailyCron:
+  handler: functions/daily-cron/index.handler
+  role: ServerlessTemplateRole
+  events:
+    - schedule:
+        name: daily-cron-12am
+        description: A CRON that runs every day at 12am
+        rate: rate(24 hours)
 
 # todoConsumer:
 #   handler: functions/todo/consumer/index.handler

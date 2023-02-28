@@ -2,7 +2,7 @@ import LambdaBuilder from '@utils/lambda-builder';
 import LambdaCloser from '@utils/lambda-closer';
 import TodoQueue from '../todo-queue';
 
-const createTodo = async () => {
+const listTodos = async () => {
 	const todos = await new TodoQueue().listTodos();
 	return new LambdaCloser({
 		data: todos,
@@ -10,6 +10,6 @@ const createTodo = async () => {
 	}).ok();
 };
 
-export const handler = new LambdaBuilder(createTodo)
+export const handler = new LambdaBuilder(listTodos)
 	.buildBasicMiddlewares()
 	.getLambdaHandler();

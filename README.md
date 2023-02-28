@@ -2,11 +2,40 @@
 
 This is serverless template. This will help you get started with serverless architecture.
 
+# Development
+
+## Local DB setup
+
+To setup up the database locally run<sup>\*</sup>:
+
+```sh
+pnpm local:db:up
+```
+
+- requires docker
+
+## Creating Models
+
+To create a new Model Test with name of type string, run:
+
+```sh
+pnpm model:generate --name Test --attributes name:string
+```
+
+## Running migrations
+
+To run migrations, run:
+
+```sh
+pnpm db:migrate
+```
+
 # Lambda Builder
 
 Build a handler for your lambda with a set of basic middy middlewares.
 
 ## Usage
+
 Create a new handler with the basic middlewares
 
 ```javascript
@@ -66,13 +95,13 @@ const response = new LambdaCloser({
 	message: 'response message'
 }).ok();
 
-Object.is(response, {
+expect(response).toEqual({
 	statusCode: 200,
 	body: {
 		data: {...},
 		message: 'response message'
 	},
-}); // true
+}); //true
 ```
 
 #### 201
@@ -83,7 +112,7 @@ const response = new LambdaCloser({
 	message: 'response message'
 }).created();
 
-Object.is(response, {
+expect(response).toEqual({
 	statusCode: 201,
 	body: {
 		data: {...},
@@ -113,7 +142,7 @@ const response = new LambdaCloser({
 	code: 'E1',
 }).badRequest();
 
-Object.is(response, {
+expect(response).toEqual({
 	statusCode: 400,
 	body: {
 		message: 'Custom error message',

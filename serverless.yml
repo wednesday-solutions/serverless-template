@@ -20,9 +20,10 @@ custom:
     includeModules:
       forceExclude:
         - '@aws-sdk/client-sqs'
-    packager: 'yarn'
+    packager: 'pnpm'
 functions: ${file(./resources/lambda/functions.yml)}
 resources:
-  - ${file(./resources/config/roles.yml)}
-  - ${file(./resources/config/rds.yml)}
-  - ${file(./resources/config/sqs.yml)}
+  # - ${file(./resources/config/roles.yml)}
+  # - ${file(./resources/config/rds.yml)}
+  # - ${file(./resources/config/sqs.yml)}
+  # ${file(./resources/cognito/cognito.yml)}
