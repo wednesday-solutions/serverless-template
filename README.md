@@ -17,7 +17,7 @@ pnpm local:db:up
 Run the following command to run migrations
 
 ```sh
-./scripts/setup-local.sh
+./setup-local.sh
 ```
 
 ## Creating Models
