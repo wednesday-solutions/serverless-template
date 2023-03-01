@@ -165,3 +165,16 @@ expect(response).toEqual({
 	},
 }); // true
 ```
+
+# Lambda Functions
+
+We have different lambda functions for showcasing :
+
+- CRUD options for Todo
+- cron jobs
+- cognito triggers
+
+```
+https://github.com/wednesday-solutions/serverless-template-todo/tree/dev/functions
+
+```
