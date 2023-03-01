@@ -6,10 +6,10 @@ postConfirmation:
   events:
     - cognitoUserPool:
         trigger: PostConfirmation
-        pool: ${self:custom.userPoolName}
+        pool: slsTodoPool
         existing: true
   environment:
-    COGNITO_USER_POOL_ID: ${file(./scripts/get-cognito-host.js)}
+    COGNITO_USER_POOL_ID: ${file(./services/cognito/get-cognito-host.js)}
     
 starterFunction:
   handler: functions/starter-function/index.handler
@@ -69,3 +69,12 @@ dailyCron:
 #           Fn::GetAtt:
 #             - todoQueue
 #             - Arn
+
+
+deleteTodo:
+  handler: functions/todo/removeTodo/index.handler
+  role: ServerlessTemplateSQSRole
+  events:
+    - http:
+        method: DELETE
+        path: /todo

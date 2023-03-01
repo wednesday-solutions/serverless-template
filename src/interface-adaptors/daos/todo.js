@@ -15,3 +15,6 @@ export const findAllTodos = () => getModels().Todo.findAll();
 
 export const findByUuid = (uuid) =>
 	getModels().Todo.findAll({ where: { uuid } });
+
+export const deleteByUuid = (uuid) =>
+	getModels().Todo.destroy({ where: { uuid } });
