@@ -50,6 +50,15 @@ export const handler = new LambdaBuilder(baseHandler)
 	.getLambdaHandler();
 ```
 
+Also supports Schema Validation , just pass schema in basicMiddleware
+
+```
+export const handler = new LambdaBuilder(baseHandler)
+	.buildBasicMiddlewares(schema)
+	.getLambdaHandler();
+
+```
+
 # Lambda Closer
 
 If you are using the APIGateway, this Class will help you construct success and error responses.
