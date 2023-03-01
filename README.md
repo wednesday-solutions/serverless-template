@@ -14,6 +14,12 @@ pnpm local:db:up
 
 - requires docker
 
+Run the following command to run migrations
+
+```sh
+./scripts/setup-local.sh
+```
+
 ## Creating Models
 
 To create a new Model Test with name of type string, run:
