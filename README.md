@@ -171,10 +171,11 @@ expect(response).toEqual({
 We have different lambda functions for showcasing :
 
 - CRUD options for Todo
-- cron jobs
-- cognito triggers
+- Cron jobs
+- Cognito triggers
 
-```
-https://github.com/wednesday-solutions/serverless-template-todo/tree/dev/functions
+[fucntions](https://github.com/wednesday-solutions/serverless-template-todo/tree/dev/functions)
 
-```
+# Postman collection
+
+You can find postman collection here : [collection](https://github.com/wednesday-solutions/serverless-template-todo/tree/dev/postman)
