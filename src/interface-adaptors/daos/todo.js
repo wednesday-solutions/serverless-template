@@ -8,8 +8,8 @@ import { getModels } from '@src/drivers/models';
 export const createTodo = async ({ uuid, title, description }) =>
 	getModels().Todo.create(Todo({ uuid, title, description }));
 
-export const updateTodo = ({ title, description, id }) =>
-	getModels().Todo.update(id, Todo({ title, description }));
+export const updateTodo = ({ uuid, title, description }) =>
+	getModels().Todo.update(Todo({ title, description }), { where: { uuid } });
 
 export const findAllTodos = () => getModels().Todo.findAll();
 

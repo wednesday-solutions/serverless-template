@@ -4,7 +4,7 @@ import { createTodo } from '@src/interface-adaptors/daos/todo';
 
 import createTodoValidator from './createTodoSchema';
 
-const create = async (event, { logger }) => {
+const createTodoHandler = async (event, { logger }) => {
 	const { title, description, uuid } = event.body;
 	try {
 		const newTodo = await createTodo({ uuid, title, description });
@@ -20,6 +20,6 @@ const create = async (event, { logger }) => {
 	}
 };
 
-export const handler = new LambdaBuilder(create)
+export const handler = new LambdaBuilder(createTodoHandler)
 	.buildBasicMiddlewares(createTodoValidator)
 	.getLambdaHandler();

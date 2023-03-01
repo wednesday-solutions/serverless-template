@@ -60,6 +60,22 @@ dailyCron:
         description: A CRON that runs every day at 12am
         rate: rate(24 hours)
 
+deleteTodo:
+  handler: functions/todo/removeTodo/index.handler
+  role: ServerlessTemplateSQSRole
+  events:
+    - http:
+        method: DELETE
+        path: /todo
+
+updateTodo:
+  handler: functions/todo/updateTodo/index.handler
+  role: ServerlessTemplateSQSRole
+  events:
+    - http:
+        method: PATCH
+        path: /todo
+
 # todoConsumer:
 #   handler: functions/todo/consumer/index.handler
 #   role: ServerlessTemplateSQSRole
@@ -71,10 +87,3 @@ dailyCron:
 #             - Arn
 
 
-deleteTodo:
-  handler: functions/todo/removeTodo/index.handler
-  role: ServerlessTemplateSQSRole
-  events:
-    - http:
-        method: DELETE
-        path: /todo
