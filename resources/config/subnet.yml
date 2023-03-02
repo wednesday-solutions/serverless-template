@@ -1,0 +1,77 @@
+Resources:
+  ServerlessSubnetGroup:
+    DependsOn:
+      - ServerlessSubnetA
+      - ServerlessSubnetB
+      - ServerlessSubnetC
+
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: 'RDS Subnet Group'
+      SubnetIds:
+        - Ref: ServerlessSubnetA
+        - Ref: ServerlessSubnetB
+        - Ref: ServerlessSubnetC
+      Tags:
+        - Key: 'Name'
+          Value: 'ServerlessSubnetGroup'
+  ServerlessSubnetA:
+    DependsOn:
+      - ServerlessVPC
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: ServerlessVPC
+      AvailabilityZone: ${self:provider.region}a
+      CidrBlock: ${self:custom.AURORA.VPC_CIDR}.0.0.0/24
+      Tags:
+        - Key: 'Name'
+          Value: 'ServerlessSubnetA'
+  ServerlessSubnetB:
+    DependsOn:
+      - ServerlessVPC
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: ServerlessVPC
+      AvailabilityZone: ${self:provider.region}b
+      CidrBlock: ${self:custom.AURORA.VPC_CIDR}.0.1.0/24
+      Tags:
+        - Key: 'Name'
+          Value: 'ServerlessSubnetB'
+  ServerlessSubnetC:
+    DependsOn:
+      - ServerlessVPC
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: ServerlessVPC
+      AvailabilityZone: ${self:provider.region}c
+      CidrBlock: ${self:custom.AURORA.VPC_CIDR}.0.2.0/24
+      Tags:
+        - Key: 'Name'
+          Value: 'ServerlessSubnetC'
+  ServerlessPrivateSubnetA:
+    DependsOn: ServerlessVPC
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: ServerlessVPC
+      AvailabilityZone: ${self:provider.region}a
+      CidrBlock: ${self:custom.AURORA.VPC_CIDR}.0.3.0/24
+  ServerlessPrivateSubnetB:
+    DependsOn: ServerlessVPC
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: ServerlessVPC
+      AvailabilityZone: ${self:provider.region}b
+      CidrBlock: ${self:custom.AURORA.VPC_CIDR}.0.4.0/24
+  ServerlessPrivateSubnetC:
+    DependsOn: ServerlessVPC
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: ServerlessVPC
+      AvailabilityZone: ${self:provider.region}c
+      CidrBlock: ${self:custom.AURORA.VPC_CIDR}.0.5.0/24
