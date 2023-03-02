@@ -23,7 +23,6 @@ custom:
     packager: 'pnpm'
   AURORA:
     VPC_CIDR: 10
-    DB_NAME: ${env:RDS_PREFIX}_${env:STAGE}
 functions: ${file(./resources/lambda/functions.yml)}
 # resources:
   # - ${file(./resources/config/roles.yml)}
