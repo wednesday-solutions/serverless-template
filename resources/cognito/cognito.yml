@@ -26,15 +26,15 @@ Resources:
             RequireNumbers: True
             RequireSymbols: True
             RequireUppercase: True
-          Schema:
-            - Name: email
-              AttributeDataType: String
-              Mutable: false
-              Required: true
-            - Name: group
-              AttributeDataType: String
-              Mutable: true
-              Required: false
+      Schema:
+          - Name: email
+            AttributeDataType: String
+            Mutable: false
+            Required: true
+          - Name: group
+            AttributeDataType: String
+            Mutable: true
+            Required: false
   CognitoUserPoolClient:
     Type: AWS::Cognito::UserPoolClient
     Properties:
