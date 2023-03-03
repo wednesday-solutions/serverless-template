@@ -5,7 +5,7 @@ Resources:
         - LambdaSnsRole
     Properties:
       LambdaConfig:
-          PostConfirmation: arn:aws:lambda:${env:REGION}:${env:ACCOUNT_ID}:function:${env:NAME}-${env:STAGE}-postConfirmation
+        PostConfirmation: arn:aws:lambda:${env:REGION}:${env:ACCOUNT_ID}:function:${env:NAME}-${env:STAGE}-postConfirmation
       UserPoolName: sls-todo-${env:STAGE}-user-pool
       AutoVerifiedAttributes:
           - email
