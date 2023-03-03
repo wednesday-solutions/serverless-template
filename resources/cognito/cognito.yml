@@ -46,8 +46,6 @@ Resources:
           - ${env:CALLBACK_URL}
       LogoutURLs:
           - ${env:LOGOUT_URL}
-      DefaultRedirectURI:
-          - ${env:REDIRECT_URL}
       AllowedOAuthFlows:
           - implicit
       AllowedOAuthScopes:
