@@ -16,42 +16,42 @@ Resources:
       RouteTableId:
         Ref: RouteTablePublic
 
-  RouteTableAssociationSubnetA:
+  RouteTableAssociationSubnetsA:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       RouteTableId:
         Ref: RouteTablePublic
       SubnetId:
         Ref: ServerlessSubnetA
-  RouteTableAssociationSubnetB:
+  RouteTableAssociationSubnetsB:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       RouteTableId:
         Ref: RouteTablePublic
       SubnetId:
         Ref: ServerlessSubnetB
-  RouteTableAssociationSubnetC:
+  RouteTableAssociationSubnetsC:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       RouteTableId:
         Ref: RouteTablePublic
       SubnetId:
         Ref: ServerlessSubnetC
-  SubnetRouteTableAssociationLambdaPublicA:
+  SubnetRouteTableAssociationsLambdaPublicA:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       SubnetId:
         Ref: ServerlessSubnetA
       RouteTableId:
         Ref: RouteTablePublic
-  SubnetRouteTableAssociationLambdaPublicB:
+  SubnetRouteTableAssociationsLambdaPublicB:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       SubnetId:
         Ref: ServerlessSubnetB
       RouteTableId:
         Ref: RouteTablePublic
-  SubnetRouteTableAssociationLambdaPublicC:
+  SubnetRouteTableAssociationsLambdaPublicC:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       SubnetId:
