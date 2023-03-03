@@ -34,6 +34,6 @@ resources:
   - ${file(./resources/config/route-private.yml)}
   - ${file(./resources/config/route-public.yml)}
   - ${file(./resources/config/security-groups.yml)}
-  - ${file(./resources/config/rds.yml)}
   - ${file(./resources/config/sqs.yml)}
   - ${file(./resources/cognito/cognito.yml)}
+  # - ${file(./resources/config/rds.yml)}
