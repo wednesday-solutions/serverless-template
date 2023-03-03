@@ -36,4 +36,4 @@ resources:
   - ${file(./resources/config/security-groups.yml)}
   - ${file(./resources/config/sqs.yml)}
   - ${file(./resources/cognito/cognito.yml)}
-  # - ${file(./resources/config/rds.yml)}
+  - ${file(./resources/config/rds.yml)}
