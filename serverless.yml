@@ -25,10 +25,10 @@ custom:
     VPC_CIDR: 10
 functions: ${file(./resources/lambda/functions.yml)}
 resources:
-  # - ${file(./resources/config/roles.yml)}
-  # - ${file(./resources/config/rds.yml)}
-  # - ${file(./resources/config/sqs.yml)}
-  # - ${file(./resources/cognito/cognito.yml)}
+  - ${file(./resources/config/roles.yml)}
+  - ${file(./resources/config/rds.yml)}
+  - ${file(./resources/config/sqs.yml)}
+  - ${file(./resources/cognito/cognito.yml)}
   - ${file(./resources/config/vpc.yml)}
   - ${file(./resources/config/subnet.yml)}
   - ${file(./resources/config/internet-gateway.yml)}
