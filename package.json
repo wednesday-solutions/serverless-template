@@ -18,7 +18,7 @@
 		"build": "sls package --stage=dev",
 		"deploy:dev": "sls deploy --stage=dev",
 		"-----------dev-----------": "",
-		"start:offline": "pnpm debug && sls offline start --stage local --verbose",
+		"start:offline": "yarn debug && sls offline start --stage local --verbose",
 		"debug": "export SLS_DEBUG=*",
 		"local:db:up": "docker compose up -d",
 		"model:generate": "npx sequelize-cli model:generate",
