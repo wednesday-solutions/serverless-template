@@ -68,14 +68,14 @@ Resources:
     Properties:
       Domain: ${self:service}-${sls:stage}
       UserPoolId: 
-        Ref CognitoUserPool
+        Ref: CognitoUserPool
 
 Outputs:
     UserPoolId:
       Description: The Id of the CognitoUserPool
       Value: 
-        Ref CognitoUserPool
+        Ref: CognitoUserPool
     UserPoolClientId:
       Description: The Id of the UserPoolClientId
       Value: 
-        Ref CognitoUserPoolClient
+        Ref: CognitoUserPoolClient
