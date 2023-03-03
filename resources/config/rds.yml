@@ -52,7 +52,7 @@ Resources:
       ScalingConfiguration:
         AutoPause: true
         MinCapacity: 1
-        MaxCapacity: 8
+        MaxCapacity: 4
         SecondsUntilAutoPause: "1000"
   TodoDBRDSClusterParameter:
     Type: AWS::RDS::DBClusterParameterGroup
@@ -77,7 +77,7 @@ Resources:
     Type: AWS::SecretsManager::Secret
     Properties:
       Description:
-        Fn::Sub: Aurora main user secret for staging
+        Fn::Sub: Aurora main user secret for dev
       GenerateSecretString:
         SecretStringTemplate: '{"username": "admin"}'
         GenerateStringKey: "password"

@@ -12,9 +12,6 @@ jobs:
         node-version: [16.x]
     steps:
       - uses: actions/checkout@v3
-      # - uses: pnpm/action-setup@v2
-      #   with:
-      #     version: 6.32.9
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
@@ -35,8 +32,8 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn
-      - name: Deploy
-        run: yarn deploy:dev
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_MY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_MY }}
+      # - name: Deploy
+      #   run: yarn deploy:dev
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

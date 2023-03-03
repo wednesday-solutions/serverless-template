@@ -1,16 +1,3 @@
-# postConfirmation:
-#   handler: functions/cognito-triggers/post-confirmation/index.handler
-#   role: LambdaRDSRole
-#   dependsOn:
-#     - CognitoUserPool
-#   events:
-#     - cognitoUserPool:
-#         trigger: PostConfirmation
-#         pool: slsTodoPool
-#         existing: true
-#   environment:
-#     COGNITO_USER_POOL_ID: ${file(./services/cognito/get-cognito-host.js)}
-    
 starterFunction:
   handler: functions/starter-function/index.handler
   role: ServerlessTemplateRole
@@ -85,5 +72,19 @@ updateTodo:
 #           Fn::GetAtt:
 #             - todoQueue
 #             - Arn
+
+
+# postConfirmation:
+#   handler: functions/cognito-triggers/post-confirmation/index.handler
+#   role: LambdaRDSRole
+#   dependsOn:
+#     - CognitoUserPool
+#   events:
+#     - cognitoUserPool:
+#         trigger: PostConfirmation
+#         pool: slsTodoPool
+#         existing: true
+#   environment:
+#     COGNITO_USER_POOL_ID: ${file(./services/cognito/get-cognito-host.js)}
 
 
