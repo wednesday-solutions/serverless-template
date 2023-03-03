@@ -101,7 +101,7 @@ Resources:
       - LambdaPolicy
       - SnsPolicy
     Properties:
-      RoleName: ${self:service.name}-${self:provider.stage}-lambda-sns-role
+      RoleName: ${self:service}-${self:provider.stage}-lambda-sns-role
       ManagedPolicyArns:
         - Ref: SnsPolicy
         - Ref: LambdaPolicy
