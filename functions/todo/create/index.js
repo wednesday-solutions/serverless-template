@@ -6,6 +6,7 @@ import createTodoValidator from './createTodoSchema';
 
 const createTodoHandler = async (event, { logger }) => {
 	const { title, description, uuid } = event.body;
+
 	try {
 		const newTodo = await createTodo({ uuid, title, description });
 		return new LambdaCloser({
