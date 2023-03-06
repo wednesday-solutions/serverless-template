@@ -25,7 +25,7 @@ const intialiseModels = (sequelize) => {
 
 export const getModels = () => {
 	if (!models) {
-		throw new Error('models are not initialises');
+		throw new Error('models are not initialised');
 	}
 	return models;
 };
