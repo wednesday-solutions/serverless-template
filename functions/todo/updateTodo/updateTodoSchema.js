@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-const createTodoValidator = Joi.object({
+const updateTodoValidator = Joi.object({
 	title: Joi.string().required(),
 	description: Joi.string().required(),
 	uuid: Joi.string()
@@ -10,4 +10,4 @@ const createTodoValidator = Joi.object({
 		.required(),
 });
 
-export default createTodoValidator;
+export default updateTodoValidator;

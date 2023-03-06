@@ -14,6 +14,54 @@ createToDo:
     - http:
         method: POST
         path: /todos
+getTodo:
+  handler: functions/todo/getTodos/index.handler
+  role: ServerlessTemplateSQSRole
+  events:
+    - http:
+        method: GET
+        path: /todos
+
+createUser:
+  handler: functions/user/createUser/index.handler
+  role: ServerlessTemplateSQSRole
+  events:
+    - http:
+        method: POST
+        path: /user
+
+getUser:
+  handler: functions/user/getUser/index.handler
+  role: ServerlessTemplateSQSRole
+  events:
+    - http:
+        method: GET
+        path: /user
+
+dailyCron:
+  handler: functions/daily-cron/index.handler
+  role: ServerlessTemplateRole
+  events:
+    - schedule:
+        name: daily-cron-12am
+        description: A CRON that runs every day at 12am
+        rate: rate(24 hours)
+
+deleteTodo:
+  handler: functions/todo/removeTodo/index.handler
+  role: ServerlessTemplateSQSRole
+  events:
+    - http:
+        method: DELETE
+        path: /todo
+
+updateTodo:
+  handler: functions/todo/updateTodo/index.handler
+  role: ServerlessTemplateSQSRole
+  events:
+    - http:
+        method: PATCH
+        path: /todo
 
 # todoConsumer:
 #   handler: functions/todo/consumer/index.handler
@@ -24,3 +72,19 @@ createToDo:
 #           Fn::GetAtt:
 #             - todoQueue
 #             - Arn
+
+
+# postConfirmation:
+#   handler: functions/cognito-triggers/post-confirmation/index.handler
+#   role: LambdaRDSRole
+#   dependsOn:
+#     - CognitoUserPool
+#   events:
+#     - cognitoUserPool:
+#         trigger: PostConfirmation
+#         pool: slsTodoPool
+#         existing: true
+#   environment:
+#     COGNITO_USER_POOL_ID: ${file(./services/cognito/get-cognito-host.js)}
+
+

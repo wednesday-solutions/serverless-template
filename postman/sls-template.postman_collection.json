@@ -1,0 +1,224 @@
+{
+	"info": {
+		"_postman_id": "f8b654d3-5cb1-4e14-9de6-44c6db1f64aa",
+		"name": "sls-template",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01_starter-function-dev",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://lp5d2avrh6.execute-api.ap-south-1.amazonaws.com/dev/hello-world",
+					"protocol": "https",
+					"host": [
+						"lp5d2avrh6",
+						"execute-api",
+						"ap-south-1",
+						"amazonaws",
+						"com"
+					],
+					"path": ["dev", "hello-world"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02_create-user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const uuid =  pm.variables.replaceIn(\"{{$guid}}\")",
+							"pm.environment.set(\"uuid\", uuid);",
+							"",
+							"",
+							"const name =  pm.variables.replaceIn(\"{{$randomFirstName}}\")",
+							"pm.environment.set(\"name\", name);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"uuid\":\"{{uuid}}\",\n    \"name\":\"{{name}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/local/user",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "3000",
+					"path": ["local", "user"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "03_get-user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/local/user?uuid={{uuid}}",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "3000",
+					"path": ["local", "user"],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "{{uuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04_create-todo",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const title =  pm.variables.replaceIn(\"{{$randomAbbreviation}}\")",
+							"pm.environment.set(\"title\", title);",
+							"",
+							"const description =  pm.variables.replaceIn(\"{{$randomLoremParagraph}}\")",
+							"pm.environment.set(\"description\", description);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"{{title}}\",\n    \"uuid\":\"{{uuid}}\",\n    \"description\": \"{{description}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/local/todos",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "3000",
+					"path": ["local", "todos"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "05_get-todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/local/todos?uuid={{uuid}}",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "3000",
+					"path": ["local", "todos"],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "{{uuid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "06_update-todo",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const title =  pm.variables.replaceIn(\"{{$randomAbbreviation}}\")",
+							"pm.environment.set(\"title\", title);",
+							"",
+							"const description =  pm.variables.replaceIn(\"{{$randomLoremParagraph}}\")",
+							"pm.environment.set(\"description\", description);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"{{title}}\",\n    \"uuid\":\"{{uuid}}\",\n    \"description\": \"{{description}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/local/todo",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "3000",
+					"path": ["local", "todo"]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "07_delete-todo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"uuid\":\"{{uuid}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/local/todo",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "3000",
+					"path": ["local", "todo"]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "uuid",
+			"value": ""
+		}
+	]
+}

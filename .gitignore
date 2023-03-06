@@ -13,3 +13,5 @@ jspm_packages
 !.env*.local
 .env*.test*
 .history
+
+yarn-error.log

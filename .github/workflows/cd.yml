@@ -9,20 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [16.x]
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 6.32.9
       - uses: actions/setup-node@v3
         with:
-          node-version: '14'
-          cache: 'pnpm'
-      # - uses: actions/checkout@v2
-      # - name: Get branch name
-      #   id: vars
-      #   run: echo ::set-output name=stage::${GITHUB_REF#refs/*/}
+          node-version: '16'
+          cache: 'yarn'
+      - uses: actions/checkout@v3
+      - name: Get branch name
+        id: vars
+        run: echo ::set-output name=stage::${GITHUB_REF#refs/*/}
       - name: Set env.ENVIRONMENT_NAME
         run: |
           if [[ ${{steps.vars.outputs.stage}} == 'dev' ]]; then
@@ -32,11 +29,11 @@ jobs:
         uses: actions/setup-node@v2-beta
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
+          cache: 'yarn'
       - name: Install dependencies
-        run: pnpm i
+        run: yarn
       # - name: Deploy
-      #   run: pnpm deploy:dev
+      #   run: yarn deploy:dev
       #   env:
       #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

@@ -2,32 +2,24 @@ import LambdaBuilder from '@utils/lambda-builder';
 import LambdaCloser from '@utils/lambda-closer';
 import { createTodo } from '@src/interface-adaptors/daos/todo';
 
-// import TodoQueue from '../todo-queue';
 import createTodoValidator from './createTodoSchema';
 
-const create = async (event, { logger }) => {
-	const { title, description } = event.body;
-	// const todo = {
-	// 	id: event.requestContext.requestId,
-	// 	title,
-	// 	description,
-	// };
+const createTodoHandler = async (event, { logger }) => {
+	const { title, description, uuid } = event.body;
 	try {
-		const newTodo = await createTodo({ title, description });
-		// const response = await new TodoQueue().enqueu(todo);
-		// logger.info(response);
+		const newTodo = await createTodo({ uuid, title, description });
 		return new LambdaCloser({
 			message: 'created',
 			data: newTodo,
 		}).ok();
 	} catch (error) {
-		logger.info(error);
+		logger.error('error', error);
 		return new LambdaCloser({
 			code: 'E1',
 		}).badRequest();
 	}
 };
 
-export const handler = new LambdaBuilder(create)
+export const handler = new LambdaBuilder(createTodoHandler)
 	.buildBasicMiddlewares(createTodoValidator)
 	.getLambdaHandler();

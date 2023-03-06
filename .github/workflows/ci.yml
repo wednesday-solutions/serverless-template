@@ -14,16 +14,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - uses: yarn/action-setup@v2
         with:
           version: 6.32.9
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
-          cache: 'pnpm'
+          cache: 'yarn'
       - name: install dependencies
-        run: pnpm i
+        run: yarn i
       - name: run the lint
-        run: pnpm lint
+        run: yarn lint
       - name: Test
-        run: pnpm test
+        run: yarn test
