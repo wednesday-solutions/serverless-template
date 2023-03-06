@@ -20,7 +20,7 @@ custom:
     includeModules:
       forceExclude:
         - '@aws-sdk/client-sqs'
-    packager: 'yarn'
+    packager: 'pnpm'
   AURORA:
     VPC_CIDR: 10
 functions: ${file(./resources/lambda/functions.yml)}

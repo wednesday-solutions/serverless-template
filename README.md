@@ -41,7 +41,7 @@ This is serverless template. This will help you get started with serverless arch
 To setup up the database locally run<sup>\*</sup>:
 
 ```sh
-yarn local:db:up
+pnpm local:db:up
 ```
 
 - requires docker
@@ -57,7 +57,7 @@ Run the following command to run migrations
 To create a new Model Test with name of type string, run:
 
 ```sh
-yarn model:generate --name Test --attributes name:string
+pnpm model:generate --name Test --attributes name:string
 ```
 
 ## Running migrations
@@ -65,7 +65,7 @@ yarn model:generate --name Test --attributes name:string
 To run migrations, run:
 
 ```sh
-yarn db:migrate
+pnpm db:migrate
 ```
 
 # Lambda Builder

@@ -12,11 +12,13 @@ jobs:
         node-version: [16.x]
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6.0.2
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'yarn'
-      - uses: actions/checkout@v3
+          cache: 'pnpm'
       - name: Get branch name
         id: vars
         run: echo ::set-output name=stage::${GITHUB_REF#refs/*/}
@@ -25,15 +27,10 @@ jobs:
           if [[ ${{steps.vars.outputs.stage}} == 'dev' ]]; then
               echo "ENVIRONMENT_NAME=dev" >> "$GITHUB_ENV"
           fi
-      - name: Setup environment
-        uses: actions/setup-node@v2-beta
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
       - name: Install dependencies
-        run: yarn
+        run: pnpm i
       # - name: Deploy
-      #   run: yarn deploy:dev
+      #   run: pnpm deploy:dev
       #   env:
       #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
