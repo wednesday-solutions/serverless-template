@@ -1,26 +1,21 @@
-import TodoReminder from '../entities/todo-reminder';
 import pushToTodoQueue from '../interface-adaptors/todo-queue';
 import { createTodo } from '../interface-adaptors/daos/todo';
-import Todo from '../entities/todos';
 
-const addTodoReminder = ({
+const addTodoReminder = async ({
 	title,
 	description,
 	when,
 	priority,
 	isRepeating = false,
 }) => {
-	const todoReminder = TodoReminder({
+	const todo = await createTodo({ title, description });
+	await pushToTodoQueue({
 		priority,
 		time: when,
 		isRepeating,
 	});
-	const todo = Todo({ title, description });
 
-	createTodo(todo);
-	pushToTodoQueue(todoReminder);
-
-	return todoReminder;
+	return todo;
 };
 
 export default addTodoReminder;
