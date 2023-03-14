@@ -3,7 +3,7 @@
 <div>
   <a href="https://www.wednesday.is?utm_source=gthb&utm_medium=repo&utm_campaign=serverless" align="left"><img src="https://uploads-ssl.webflow.com/5ee36ce1473112550f1e1739/5f5879492fafecdb3e5b0e75_wednesday_logo.svg"></a>
   <p>
-    <h1 align="left"> Serverless Template Todo </h1>
+    <h1 align="left"> Serverless Template </h1>
   </p>
   <p>
     A repository of Serverless applications showcasing how to orchestrate cloud infrastructure for varied use cases with multiple cloud infrastructure providers.
@@ -38,7 +38,6 @@ This is serverless template. This will help you get started with serverless arch
 
 We follow [clean code](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
 
-
 ```
 .
 └── src/
@@ -49,13 +48,15 @@ We follow [clean code](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clea
 ```
 
 ## drivers
+
 - Layer #1 for frameworks and drivers.
 - This example uses Sequelize, Model definitions are written in this folder
 - AWS SDK client creation should be done in this folder
 
 ## interface-adaptors
+
 - Layer #2 for adaptors that sit in between your drivers and the business logic.
-- Write your DAOs here 
+- Write your DAOs here
 - do not use Models or SDK directly
 
 <blockquote cite="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"> 
@@ -63,9 +64,24 @@ The software in this layer is a set of adapters that convert data from the forma
 </blockquote>
 
 ## use-cases
+
 - Layer #3, for your business logic.
 
 <br>
+
+# Creation of the following resources is automated
+
+    - [Serverless Aurora cluster](resources/config/rds.yml)
+    - [Subnets](resources/config/subnet.yml)
+    - [Public Route Table](resources/config/route-public.yml)
+    - [Private Route Table](resources/config/route-private.yml)
+    - [Security Groups](resources/config/security-groups.yml)
+    - [VPC](resources/config/vpc.yml)
+    - [Elastic IP](resources/config/elastic-ip.yml)
+    - [NAT Gateway](resources/config/nat-gateway.yml)
+    - [Internet Gateway](resources/config/internet-gateway.yml)
+    - [IAM Roles](resources/config/roles.yml)
+    - [Lambdas](resources/lambda/functions.yml)
 
 # Development
 
@@ -241,7 +257,7 @@ We have different lambda functions for showcasing :
 - Cron jobs
 - Cognito triggers
 
-[fucntions](https://github.com/wednesday-solutions/serverless-template-todo/tree/dev/functions)
+[functions](https://github.com/wednesday-solutions/serverless-template-todo/tree/dev/functions)
 
 # Postman collection
 
