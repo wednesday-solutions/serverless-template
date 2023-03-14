@@ -44,7 +44,6 @@ We follow [clean code](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clea
 └── src/
 	├── drivers
 	│   └── models
-    ├── entities
     ├── interface-adaptors
     └── use-cases
 ```
@@ -65,10 +64,6 @@ The software in this layer is a set of adapters that convert data from the forma
 
 ## use-cases
 - Layer #3, for your business logic.
-
-## entities
-- Layer #4, your base entities
-- use entites to ensure consistency
 
 <br>
 
