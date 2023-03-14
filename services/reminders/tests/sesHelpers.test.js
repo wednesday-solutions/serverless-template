@@ -70,7 +70,7 @@ describe('ses helpers test suite', () => {
 			const response = await sendEmail({ message: textMessage, subject });
 			expect(response).toEqual(functionResponse);
 		});
-		it.skip('should handle case where sending email fails as expected', async () => {
+		it('should handle case where sending email fails as expected', async () => {
 			const { apiResponse, functionResponse } = FailureData;
 			jest
 				.spyOn(ssmUtils, 'getParamsFromSSM')

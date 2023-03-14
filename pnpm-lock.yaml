@@ -1,4 +1,4 @@
-lockfileVersion: 5.4
+lockfileVersion: 5.3
 
 specifiers:
   '@aws-sdk/client-ses': ^3.192.0
@@ -95,7 +95,7 @@ dependencies:
   pg-hstore: 2.3.4
   pino: 7.11.0
   pino-lambda: 4.1.0_pino@7.11.0
-  sequelize: 6.28.0_qczw6v5noaqwp62xlvagahbnza
+  sequelize: 6.28.0_mysql2@3.1.2+pg-hstore@2.3.4
   serverless-offline: 12.0.4_serverless@3.28.1
   source-map-support: 0.5.21
 
@@ -109,20 +109,20 @@ devDependencies:
   aws-sdk-client-mock: 1.0.0
   babel-eslint: 10.1.0_eslint@8.34.0
   babel-jest: 27.5.1_@babel+core@7.20.12
-  babel-loader: 8.3.0_nwtvwtk5tmh22l2urnqucz7kqu
+  babel-loader: 8.3.0_6da75b4d5d9b0fad2f548b614167ea85
   babel-preset-env: 1.7.0
   core-js: 3.28.0
   esbuild: 0.16.17
   eslint: 8.34.0
-  eslint-config-airbnb-base: 15.0.0_mvgyw3chnqkp6sgfmmtihyjpnm
+  eslint-config-airbnb-base: 15.0.0_654d8b6c476c14ff48c5632683e12f6b
   eslint-config-prettier: 4.3.0_eslint@8.34.0
-  eslint-config-prettier-standard: 3.0.2_kkxvvyo5jvbtmnwijr3wxd47r4
-  eslint-config-standard: 14.1.1_wki2b36mxcelpkvxu2tt5ogr64
-  eslint-import-resolver-alias: 1.1.2_5rfvta7qn57kxm7ir36ta6fixq
+  eslint-config-prettier-standard: 3.0.2_52af5ae1dd4d433636c84c776b8f9f8f
+  eslint-config-standard: 14.1.1_b291a0efccb888b7aab7a6a73eb8d1f7
+  eslint-import-resolver-alias: 1.1.2_eslint-plugin-import@2.27.5
   eslint-import-resolver-node: 0.3.7
   eslint-plugin-import: 2.27.5_eslint@8.34.0
   eslint-plugin-node: 10.0.0_eslint@8.34.0
-  eslint-plugin-prettier: 3.4.1_qy4fikzatjwi33cglabxpvuoz4
+  eslint-plugin-prettier: 3.4.1_8638542b209a6c8dec46580377d68ecf
   eslint-plugin-promise: 4.3.1
   eslint-plugin-react: 7.32.2_eslint@8.34.0
   eslint-plugin-standard: 4.1.0_eslint@8.34.0
@@ -5029,7 +5029,7 @@ packages:
       - supports-color
     dev: true
 
-  /babel-loader/8.3.0_nwtvwtk5tmh22l2urnqucz7kqu:
+  /babel-loader/8.3.0_6da75b4d5d9b0fad2f548b614167ea85:
     resolution: {integrity: sha512-H8SvsMF+m9t15HNLMipppzkC+Y2Yq+v3SonZyU70RBL/h1gxPkH08Ot8pEE9Z4Kd+czyWJClmFS8qzIP9OZ04Q==}
     engines: {node: '>= 8.9'}
     peerDependencies:
@@ -6912,7 +6912,7 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /eslint-config-airbnb-base/15.0.0_mvgyw3chnqkp6sgfmmtihyjpnm:
+  /eslint-config-airbnb-base/15.0.0_654d8b6c476c14ff48c5632683e12f6b:
     resolution: {integrity: sha512-xaX3z4ZZIcFLvh2oUNvcX5oEofXda7giYmuplVxoOg5A7EXJMrUyqRgR+mhDhPK8LZ4PttFOBvCYDbX3sUoUig==}
     engines: {node: ^10.12.0 || >=12.0.0}
     peerDependencies:
@@ -6927,7 +6927,7 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-config-prettier-standard/3.0.2_kkxvvyo5jvbtmnwijr3wxd47r4:
+  /eslint-config-prettier-standard/3.0.2_52af5ae1dd4d433636c84c776b8f9f8f:
     resolution: {integrity: sha512-GUfjNOwkYmZPxZ0orDl5YjRJOLf6rzXWR8pHGixNaxI5CORAQvnJ5jkRudYFUhDcxTCALuXXwK+uIlR56Dbpvg==}
     peerDependencies:
       eslint-config-prettier: '>=5.0.0'
@@ -6936,8 +6936,8 @@ packages:
       prettier-config-standard: '>=1.0.0'
     dependencies:
       eslint-config-prettier: 4.3.0_eslint@8.34.0
-      eslint-config-standard: 14.1.1_wki2b36mxcelpkvxu2tt5ogr64
-      eslint-plugin-prettier: 3.4.1_qy4fikzatjwi33cglabxpvuoz4
+      eslint-config-standard: 14.1.1_b291a0efccb888b7aab7a6a73eb8d1f7
+      eslint-plugin-prettier: 3.4.1_8638542b209a6c8dec46580377d68ecf
       prettier-config-standard: 1.0.1
     dev: true
 
@@ -6951,7 +6951,7 @@ packages:
       get-stdin: 6.0.0
     dev: true
 
-  /eslint-config-standard/14.1.1_wki2b36mxcelpkvxu2tt5ogr64:
+  /eslint-config-standard/14.1.1_b291a0efccb888b7aab7a6a73eb8d1f7:
     resolution: {integrity: sha512-Z9B+VR+JIXRxz21udPTL9HpFMyoMUEeX1G251EQ6e05WD9aPVtVBn09XUmZ259wCMlCDmYDSZG62Hhm+ZTJcUg==}
     peerDependencies:
       eslint: '>=6.2.2'
@@ -6967,7 +6967,7 @@ packages:
       eslint-plugin-standard: 4.1.0_eslint@8.34.0
     dev: true
 
-  /eslint-import-resolver-alias/1.1.2_5rfvta7qn57kxm7ir36ta6fixq:
+  /eslint-import-resolver-alias/1.1.2_eslint-plugin-import@2.27.5:
     resolution: {integrity: sha512-WdviM1Eu834zsfjHtcGHtGfcu+F30Od3V7I9Fi57uhBEwPkjDcii7/yW8jAT+gOhn4P/vOxxNAXbFAKsrrc15w==}
     engines: {node: '>= 4'}
     peerDependencies:
@@ -6986,7 +6986,7 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-module-utils/2.7.4_eyqnu5kib2hfrvsonwfdq4ojse:
+  /eslint-module-utils/2.7.4_2620da75480e8e58d64e6d8a3871c991:
     resolution: {integrity: sha512-j4GT+rqzCoRKHwURX7pddtIPGySnX9Si/cgMI5ztrcqOPtk5dDEeZ34CQVPphnqkJytlc97Vuk05Um2mJ3gEQA==}
     engines: {node: '>=4'}
     peerDependencies:
@@ -7042,7 +7042,7 @@ packages:
       doctrine: 2.1.0
       eslint: 8.34.0
       eslint-import-resolver-node: 0.3.7
-      eslint-module-utils: 2.7.4_eyqnu5kib2hfrvsonwfdq4ojse
+      eslint-module-utils: 2.7.4_2620da75480e8e58d64e6d8a3871c991
       has: 1.0.3
       is-core-module: 2.11.0
       is-glob: 4.0.3
@@ -7072,7 +7072,7 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-plugin-prettier/3.4.1_qy4fikzatjwi33cglabxpvuoz4:
+  /eslint-plugin-prettier/3.4.1_8638542b209a6c8dec46580377d68ecf:
     resolution: {integrity: sha512-htg25EUYUeIhKHXjOinK4BgCcDwtLHjqaxCDsMy5nbnUMkKFvIhMVCp+5GFUXQ4Nr8lBsPqtGAqBenbpFqAA2g==}
     engines: {node: '>=6.0.0'}
     peerDependencies:
@@ -11528,7 +11528,7 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: false
 
-  /sequelize/6.28.0_qczw6v5noaqwp62xlvagahbnza:
+  /sequelize/6.28.0_mysql2@3.1.2+pg-hstore@2.3.4:
     resolution: {integrity: sha512-+WHqvUQgTp19GLkt+gyQ+F6qg+FIEO2O5F9C0TOYV/PjZ2a/XwWvVkL1NCkS4VSIjVVvAUutiW6Wv9ofveGaVw==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
