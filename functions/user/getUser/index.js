@@ -21,7 +21,7 @@ const getUser = async (event, { logger }) => {
 			data: user,
 		}).ok();
 	} catch (error) {
-		logger.error('error', error);
+		logger.error(error);
 		return new LambdaCloser({
 			code: 'E4',
 		}).badRequest();

@@ -1,4 +1,5 @@
 import pino from 'pino';
+import { isLocal } from '@utils';
 
 // eslint-disable-next-line import/no-mutable-exports
 let logger = console;
@@ -16,7 +17,7 @@ export const initializeLogger = (destination) => {
 			level: process.env.LOG_LEVEL || 'info',
 			useLevelLabels: true,
 		},
-		destination
+		isLocal() ? null : destination,
 	);
 	return logger;
 };

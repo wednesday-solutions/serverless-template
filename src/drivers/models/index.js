@@ -1,33 +1,46 @@
-import todo from './todo';
-import user from './user';
+const fs = require('fs');
+const path = require('path');
+
+const basename = path.basename(__filename);
 
 const Sequelize = require('sequelize');
 
-let models;
+const db = {};
+const modelsPath = path.resolve(process.cwd(), 'src/drivers/models');
 
 const intialiseModels = (sequelize) => {
-	const model = todo(sequelize, Sequelize.DataTypes);
-	const userModel = user(sequelize, Sequelize.DataTypes);
-	models = {};
-	models[model.name] = model;
-	models[userModel.name] = userModel;
+	fs.readdirSync(modelsPath)
+		.filter((file) => {
+			return (
+				file.indexOf('.') !== 0 &&
+				file !== basename &&
+				file.slice(-3) === '.js' &&
+				file.indexOf('.test.js') === -1
+			);
+		})
+		.forEach((file) => {
+			// eslint-disable-next-line import/no-dynamic-require, global-require
+			const model = require(path.join(modelsPath, file))(sequelize, Sequelize);
+			db[model.name] = model;
+		});
 
-	Object.keys(models).forEach((modelName) => {
-		if (models[modelName].associate) {
-			models[modelName].associate(models);
+	Object.keys(db).forEach((modelName) => {
+		if (db[modelName].associate) {
+			db[modelName].associate(db);
 		}
 	});
 
-	models.sequelize = sequelize;
-	models.Sequelize = Sequelize;
-	return models;
+	db.sequelize = sequelize;
+	db.Sequelize = Sequelize;
+
+	return db;
 };
 
 export const getModels = () => {
-	if (!models) {
-		throw new Error('models are not initialises');
+	if (!db.sequelize) {
+		throw new Error('models are not initialised');
 	}
-	return models;
+	return db;
 };
 
 export default intialiseModels;

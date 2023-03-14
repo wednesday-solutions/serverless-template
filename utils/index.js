@@ -17,3 +17,5 @@ export const mapKeysDeep = (obj, fn) =>
 
 export const transformToSnakeCase = (payload) =>
 	mapKeysDeep(payload, (keys) => snakeCase(keys));
+
+export const isLocal = () => process.env.STAGE === 'local';

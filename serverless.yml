@@ -3,7 +3,8 @@ useDotenv: true
 variablesResolutionMode: 20210326
 
 plugins:
-  - serverless-webpack
+  - serverless-esbuild
+  - serverless-dotenv-plugin
   - serverless-offline
 
 provider:
@@ -15,12 +16,11 @@ provider:
 package:
   individually: true
 custom:
-  urlPrefix: 'sls'
   webpack:
     includeModules:
       forceExclude:
         - '@aws-sdk/client-sqs'
-    packager: 'yarn'
+    packager: 'pnpm'
   AURORA:
     VPC_CIDR: 10
 functions: ${file(./resources/lambda/functions.yml)}

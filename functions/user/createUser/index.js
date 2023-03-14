@@ -14,7 +14,7 @@ const create = async (event, { logger }) => {
 			data: newUser,
 		}).ok();
 	} catch (error) {
-		logger.error('error', error);
+		logger.error(error);
 		return new LambdaCloser({
 			code: 'E5',
 		}).badRequest();

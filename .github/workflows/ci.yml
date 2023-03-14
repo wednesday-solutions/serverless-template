@@ -13,17 +13,37 @@ jobs:
         node-version: [14.x]
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: yarn/action-setup@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          version: 6.32.9
-      - uses: actions/setup-node@v3
+          node-version: 16
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
         with:
-          node-version: '14'
-          cache: 'yarn'
-      - name: install dependencies
-        run: yarn i
-      - name: run the lint
-        run: yarn lint
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: pnpm i
+      - name: Lint
+        run: pnpm lint
       - name: Test
-        run: yarn test
+        run: pnpm test

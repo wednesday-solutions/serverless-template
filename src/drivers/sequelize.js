@@ -1,6 +1,6 @@
 import logger from '@utils/logger';
-import Sequelize from 'sequelize';
-import intialiseModels from './models';
+import { Sequelize } from 'sequelize';
+import intialiseModels from './models/index';
 
 let sequelize = null;
 
@@ -40,7 +40,7 @@ export const connectToDatabase = async () => {
 			if (
 				Object.prototype.hasOwnProperty.call(
 					sequelize.connectionManager,
-					'getConnection'
+					'getConnection',
 				)
 			) {
 				delete sequelize.connectionManager.getConnection;
@@ -58,6 +58,7 @@ export const closeDatabaseConnection = async () => {
 	try {
 		if (!sequelize) {
 			logger.error('sequelize is not initialised');
+			return;
 		}
 		sequelize.connectionManager.close();
 	} catch (error) {

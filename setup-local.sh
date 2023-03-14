@@ -3,7 +3,7 @@ set -x
 
 # purely for LOCAL setup.
 
-yarn i
+pnpm i
 export ENVIRONMENT_NAME=local
 
 echo '===Creating database==='

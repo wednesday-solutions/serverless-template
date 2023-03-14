@@ -13,7 +13,7 @@ const createTodoHandler = async (event, { logger }) => {
 			data: newTodo,
 		}).ok();
 	} catch (error) {
-		logger.error('error', error);
+		logger.error(error);
 		return new LambdaCloser({
 			code: 'E1',
 		}).badRequest();

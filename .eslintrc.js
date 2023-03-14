@@ -20,14 +20,6 @@ module.exports = {
 			},
 		},
 	],
-	settings: {
-		'import/resolver': {
-			node: {},
-			webpack: {
-				config: 'webpack.config.js',
-			},
-		},
-	},
 	parserOptions: {
 		ecmaVersion: 'latest',
 		sourceType: 'module',
@@ -35,5 +27,17 @@ module.exports = {
 	rules: {
 		'import/prefer-default-export': 'off',
 		'import/no-extraneous-dependencies': 'warn',
+	},
+	settings: {
+		'import/resolver': {
+			alias: {
+				map: [
+					['@src', './src'],
+					['@aws', './aws'],
+					['@utils', './utils'],
+					['@services', './services'],
+				],
+			},
+		},
 	},
 };

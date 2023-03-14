@@ -1,11 +1,10 @@
-import User from '@src/entities/user';
 import { getModels } from '@src/drivers/models';
 
 export const createUser = async ({ uuid, name }) =>
-	getModels().User.create(User({ uuid, name }));
+	getModels().User.create({ uuid, name });
 
 export const updateUser = async ({ uuid, name }) =>
-	getModels().User.update(uuid, User({ name }));
+	getModels().User.update(uuid, { name });
 
 export const findAllUsers = async () => getModels().User.findAll();
 
