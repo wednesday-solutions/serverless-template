@@ -4,12 +4,13 @@
 		"target": "ES6",
 		"baseUrl": ".",
 		"paths": {
-			"@utils": ["./utils/index.js"],
-			"@utils/*": ["./utils/*"],
-			"@services/*": ["./services/*"],
-			"@aws/*": ["./aws/*"],
-			"@src/*": ["./src/*"]
-		}
+			"@utils": ["utils/index.js"],
+			"@utils/*": ["utils/*"],
+			"@services/*": ["services/*"],
+			"@aws/*": ["aws/*"],
+			"@src/*": ["src/*"]
+		},
+		"moduleResolution": "node"
 	},
 	"exclude": ["node_modules"]
 }

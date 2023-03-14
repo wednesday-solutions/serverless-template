@@ -2,7 +2,7 @@
  * implement daos here, this file will import the model
  */
 
-import { getModels } from '@src/drivers/models';
+import { getModels } from '@src/drivers/models/index';
 
 export const createTodo = async ({ uuid, title, description }) =>
 	getModels().Todo.create({ uuid, title, description });

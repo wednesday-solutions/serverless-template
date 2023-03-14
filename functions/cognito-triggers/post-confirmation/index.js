@@ -26,7 +26,7 @@ const baseHandler = async (event, { logger }) => {
 		logger.info(JSON.stringify(response));
 		return event;
 	} catch (err) {
-		logger.error('error', err);
+		logger.error(err);
 		return new LambdaCloser({
 			message: err,
 			code: 'E1',

@@ -1,0 +1,5 @@
+{
+    "colorizeObjects": true,
+    "crlf": false,
+    "ignore": "err.original,err.parent,err.stack"
+}

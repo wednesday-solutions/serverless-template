@@ -3,7 +3,8 @@ useDotenv: true
 variablesResolutionMode: 20210326
 
 plugins:
-  - serverless-webpack
+  - serverless-esbuild
+  - serverless-dotenv-plugin
   - serverless-offline
 
 provider:
@@ -15,7 +16,6 @@ provider:
 package:
   individually: true
 custom:
-  urlPrefix: 'sls'
   webpack:
     includeModules:
       forceExclude:

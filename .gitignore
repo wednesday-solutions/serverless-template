@@ -8,6 +8,7 @@ jspm_packages
 .serverless
 .vscode/
 .webpack
+.esbuild
 .idea
 
 !.env*.local
