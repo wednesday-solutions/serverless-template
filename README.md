@@ -71,17 +71,17 @@ The software in this layer is a set of adapters that convert data from the forma
 
 # Creation of the following resources is automated
 
-[Serverless Aurora cluster](resources/config/rds.yml)
-[Subnets](resources/config/subnet.yml)
-[Public Route Table](resources/config/route-public.yml)
-[Private Route Table](resources/config/route-private.yml)
-[Security Groups](resources/config/security-groups.yml)
-[VPC](resources/config/vpc.yml)
-[Elastic IP](resources/config/elastic-ip.yml)
-[NAT Gateway](resources/config/nat-gateway.yml)
-[Internet Gateway](resources/config/internet-gateway.yml)
-[IAM Roles](resources/config/roles.yml)
-[Lambdas](resources/lambda/functions.yml)
+- [Serverless Aurora cluster](resources/config/rds.yml)
+- [Subnets](resources/config/subnet.yml)
+- [Public Route Table](resources/config/route-public.yml)
+- [Private Route Table](resources/config/route-private.yml)
+- [Security Groups](resources/config/security-groups.yml)
+- [VPC](resources/config/vpc.yml)
+- [Elastic IP](resources/config/elastic-ip.yml)
+- [NAT Gateway](resources/config/nat-gateway.yml)
+- [Internet Gateway](resources/config/internet-gateway.yml)
+- [IAM Roles](resources/config/roles.yml)
+- [Lambdas](resources/lambda/functions.yml)
 
 # Development
 
