@@ -38,7 +38,6 @@ This is serverless template. This will help you get started with serverless arch
 
 We follow [clean code](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
 
-
 ```
 .
 └── src/
@@ -50,13 +49,15 @@ We follow [clean code](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clea
 ```
 
 ## drivers
+
 - Layer #1 for frameworks and drivers.
 - This example uses Sequelize, Model definitions are written in this folder
 - AWS SDK client creation should be done in this folder
 
 ## interface-adaptors
+
 - Layer #2 for adaptors that sit in between your drivers and the business logic.
-- Write your DAOs here 
+- Write your DAOs here
 - do not use Models or SDK directly
 
 <blockquote cite="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"> 
@@ -64,9 +65,11 @@ The software in this layer is a set of adapters that convert data from the forma
 </blockquote>
 
 ## use-cases
+
 - Layer #3, for your business logic.
 
 ## entities
+
 - Layer #4, your base entities
 - use entites to ensure consistency
 
@@ -79,7 +82,7 @@ The software in this layer is a set of adapters that convert data from the forma
 To setup up the database locally run<sup>\*</sup>:
 
 ```sh
-pnpm local:db:up
+yarn local:db:up
 ```
 
 - requires docker
@@ -95,7 +98,7 @@ Run the following command to run migrations
 To create a new Model Test with name of type string, run:
 
 ```sh
-pnpm model:generate --name Test --attributes name:string
+yarn model:generate --name Test --attributes name:string
 ```
 
 ## Running migrations
@@ -103,7 +106,7 @@ pnpm model:generate --name Test --attributes name:string
 To run migrations, run:
 
 ```sh
-pnpm db:migrate
+yarn db:migrate
 ```
 
 ## Lambda Builder

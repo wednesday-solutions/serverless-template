@@ -31,6 +31,6 @@
 ### Checklist
 
 - [ ] PR description included
-- [ ] `pnpm test` passes
+- [ ] `yarn test` passes
 - [ ] Tests are [changed or added]
 - [ ] Relevant documentation is changed or added (and PR referenced)
