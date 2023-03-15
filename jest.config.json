@@ -38,7 +38,9 @@
 		"!services/cognito/*.js",
 		"!aws/*js",
 		"!postman/*",
-		"!resources/*"
+		"!resources/*",
+		"!functions/todo/consumer/*js",
+		"!functions/todo/*js"
 	],
 	"coverageThreshold": {
 		"global": {

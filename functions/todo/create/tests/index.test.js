@@ -23,6 +23,12 @@ describe('create todo function tests', () => {
 		expect(res.body.message).toBe(CREATE_TODO_MOCK.message);
 	});
 
+	it('should create Todo fails', async () => {
+		const res = await createTodoHandler(event, { logger });
+		expect(res.statusCode).toBe(200);
+		expect(res.body.message).toBe(CREATE_TODO_MOCK.message);
+	});
+
 	it('should throw error if Todo is not created properly', async () => {
 		const res = await handler(
 			{

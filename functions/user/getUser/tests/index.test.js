@@ -23,6 +23,12 @@ describe('get todos function tests', () => {
 		expect(res.body.message).toBe(GET_USER_MOCK.message);
 	});
 
+	it('If No User is found', async () => {
+		jest.spyOn(utils, 'findUser').mockResolvedValue({});
+		const res = await getUser(event, { logger });
+		expect(res.body.message).toBe('Data not found');
+	});
+
 	it('should throw error if we do not get User', async () => {
 		const res = await handler(
 			{

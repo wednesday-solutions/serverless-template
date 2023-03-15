@@ -23,6 +23,12 @@ describe('get todos function tests', () => {
 		expect(res.body.message).toBe(GET_TODO_MOCK.message);
 	});
 
+	it('If Todo is empty', async () => {
+		jest.spyOn(utils, 'findByUuid').mockResolvedValue({});
+		const res = await getTodosHandler(event, { logger });
+		expect(res.body.message).toBe('Data not found');
+	});
+
 	it('should throw error if we do not get TODO', async () => {
 		const res = await handler(
 			{
