@@ -12,6 +12,11 @@ module.exports = (sequelize, Sequelize) => {
 	}
 	Todo.init(
 		{
+			uuid: {
+				allowNull: false,
+				type: Sequelize.DataTypes.UUID,
+				defaultValue: Sequelize.DataTypes.UUIDV4,
+			},
 			title: Sequelize.DataTypes.STRING,
 			description: Sequelize.DataTypes.STRING,
 		},
