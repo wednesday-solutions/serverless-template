@@ -52,6 +52,6 @@ jobs:
         with:
             github-token: ${{ secrets.GITHUB_TOKEN }}
             custom-title: Jest Coverage Report
-            package-manager: pnpm
+            package-manager: yarn
             threshold: 40
-            test-script: pnpm jest --silent --ci --coverage --testLocationInResults --json --outputFile="report.json"
+            test-script: yarn jest --silent --ci --coverage --testLocationInResults --json --outputFile="report.json"

@@ -1,0 +1,9 @@
+<testExecutions version="1">
+<file path="functions/starter-function/tests/index.test.js">
+<testCase name="starter function tests should call the starter function" duration="2" />
+</file>
+<file path="functions/todo/create/tests/index.test.js">
+<testCase name="create todo function tests should create Todo properly" duration="2" />
+<testCase name="create todo function tests should throw error if Todo is not created properly" duration="35" />
+</file>
+</testExecutions>
