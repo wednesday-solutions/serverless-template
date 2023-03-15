@@ -1,5 +1,5 @@
 <testExecutions version="1">
 <file path="functions/daily-cron/tests/index.test.js">
-<testCase name="starter function tests should call the starter function" duration="2" />
+<testCase name="starter function tests should call the starter function" duration="1" />
 </file>
 </testExecutions>
