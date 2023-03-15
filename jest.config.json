@@ -1,0 +1,49 @@
+{
+	"bail": 1,
+	"verbose": true,
+	"moduleNameMapper": {
+		"@(utils|services|functions)(.*)$": "<rootDir>/$1/$2/",
+		"@src(.*)$": "<rootDir>/src/$1"
+	},
+	"reporters": [
+		"default",
+		[
+			"jest-sonar",
+			{
+				"outputDirectory": "reports",
+				"outputName": "test-report.xml",
+				"relativeRootDir": "./",
+				"reportedFilePath": "relative"
+			}
+		]
+	],
+	"coverageReporters": ["json-summary", "text", "lcov"],
+	"collectCoverageFrom": [
+		"./**/*.js",
+		"!babel.config.js",
+		"!.eslintrc.js",
+		"!jest.config.js",
+		"!webpack.config.js",
+		"!coverage/**/*.js",
+		"!utils/*",
+		"!mocks/**/*.js",
+		"!.webpack/**/*.*",
+		"!models/*",
+		"!scripts/*",
+		"!migrations/*",
+		"!seeders/*",
+		"!db/**/*.js",
+		"!src/**/*.js",
+		"!utils/middleWares/*.js",
+		"!services/cognito/*.js",
+		"!aws/*js"
+	],
+	"coverageThreshold": {
+		"global": {
+			"statements": 40,
+			"branches": 40,
+			"functions": 40,
+			"lines": 40
+		}
+	}
+}

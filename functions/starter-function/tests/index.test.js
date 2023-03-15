@@ -1,4 +1,4 @@
-import { StarterFunctionSuccessMessage } from '@utils/mockData/starterFunctionMockData';
+import { StarterFunctionSuccessMessage } from '@utils/mockData/mockData';
 import { baseHandler } from '../index';
 
 describe('starter function tests', () => {
