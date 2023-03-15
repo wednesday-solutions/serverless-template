@@ -6,17 +6,15 @@ module.exports = (sequelize, Sequelize) => {
 		 * The `models/index` file will call this method automatically.
 		 */
 		static associate(models) {
-			// define association here
-			Todo.belongsTo(models.User);
+			Todo.belongsTo(models.User, {
+				as: 'user',
+				foreignKey: 'uuid',
+			});
 		}
 	}
 	Todo.init(
 		{
-			uuid: {
-				allowNull: false,
-				type: Sequelize.DataTypes.UUID,
-				defaultValue: Sequelize.DataTypes.UUIDV4,
-			},
+			uuid: Sequelize.DataTypes.STRING,
 			title: Sequelize.DataTypes.STRING,
 			description: Sequelize.DataTypes.STRING,
 		},
