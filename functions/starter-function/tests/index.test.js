@@ -1,12 +1,12 @@
-import { StarterFunctionSuccessMessage } from '@utils/mockData/starterFunctionMockData';
+import { StarterFunctionSuccessMessage } from '@utils/mockData/mockData';
 import { baseHandler } from '../index';
 
-describe('agree terms function tests', () => {
+describe('starter function tests', () => {
 	afterEach(() => {
 		jest.clearAllMocks();
 	});
 
-	it('should call the agree terms function', async () => {
+	it('should call the starter function', async () => {
 		const res = await baseHandler();
 		expect(res.statusCode).toBe(200);
 		expect(res.body.message).toBe(StarterFunctionSuccessMessage);

@@ -47,3 +47,11 @@ jobs:
         run: pnpm lint
       - name: Test
         run: pnpm test
+      - name: Test and generate coverage report
+        uses: artiomtr/jest-coverage-report-action@v2.0-rc.4
+        with:
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            custom-title: Jest Coverage Report
+            package-manager: yarn
+            threshold: 40
+            test-script: yarn jest --silent --ci --coverage --testLocationInResults --json --outputFile="report.json"
