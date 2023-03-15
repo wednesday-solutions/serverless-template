@@ -4,7 +4,7 @@ import { deleteByUuid } from '@src/interface-adaptors/daos/todo';
 
 import deleteTodoValidator from './deleteTodoSchema';
 
-const deleteTodoHandler = async (event, { logger }) => {
+export const deleteTodoHandler = async (event, { logger }) => {
 	const { uuid } = event.body;
 	try {
 		const deleteTodoResponse = await deleteByUuid(uuid);
