@@ -4,7 +4,7 @@ import { createTodo } from '@src/interface-adaptors/daos/todo';
 
 import createTodoValidator from './createTodoSchema';
 
-const createTodoHandler = async (event, { logger }) => {
+export const createTodoHandler = async (event, { logger }) => {
 	const { title, description, uuid } = event.body;
 	try {
 		const newTodo = await createTodo({ uuid, title, description });
