@@ -5,7 +5,7 @@ import { findByUuid } from '@src/interface-adaptors/daos/todo';
 
 import getTodoValidator from './getTodoSchema';
 
-const getTodosHandler = async (event, { logger }) => {
+export const getTodosHandler = async (event, { logger }) => {
 	const { uuid } = event.queryStringParameters;
 	try {
 		const todoList = await findByUuid(uuid);

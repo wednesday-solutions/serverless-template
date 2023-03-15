@@ -4,7 +4,7 @@ import { createUser } from '@src/interface-adaptors/daos/user';
 
 import createUserValidator from './createUserSchema';
 
-const create = async (event, { logger }) => {
+export const create = async (event, { logger }) => {
 	const { uuid, name } = event.body;
 	try {
 		const newUser = await createUser({ uuid, name });

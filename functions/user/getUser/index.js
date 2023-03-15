@@ -6,7 +6,7 @@ import { findUser } from '@src/interface-adaptors/daos/user';
 
 import getUserValidator from './getUserSchema';
 
-const getUser = async (event, { logger }) => {
+export const getUser = async (event, { logger }) => {
 	const { uuid } = event.queryStringParameters;
 	try {
 		const user = await findUser(uuid);

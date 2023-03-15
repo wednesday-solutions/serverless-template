@@ -36,14 +36,16 @@
 		"!src/**/*.js",
 		"!utils/middleWares/*.js",
 		"!services/cognito/*.js",
-		"!aws/*js"
+		"!aws/*js",
+		"!postman/*",
+		"!resources/*"
 	],
 	"coverageThreshold": {
 		"global": {
-			"statements": 40,
-			"branches": 40,
-			"functions": 40,
-			"lines": 40
+			"statements": 75,
+			"branches": 75,
+			"functions": 75,
+			"lines": 75
 		}
 	}
 }

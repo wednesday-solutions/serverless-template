@@ -4,7 +4,7 @@ import { updateTodo } from '@src/interface-adaptors/daos/todo';
 
 import updateTodoValidator from './updateTodoSchema';
 
-const updateHandler = async (event, { logger }) => {
+export const updateHandler = async (event, { logger }) => {
 	const { title, description, uuid } = event.body;
 	try {
 		const updatedTodoResponse = await updateTodo({ uuid, title, description });
