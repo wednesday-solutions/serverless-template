@@ -1,6 +1,5 @@
 <testExecutions version="1">
-<file path="functions/user/getUser/tests/index.test.js">
-<testCase name="get todos function tests should get User properly" duration="2" />
-<testCase name="get todos function tests should throw error if we do not get User" duration="18" />
+<file path="functions/daily-cron/tests/index.test.js">
+<testCase name="starter function tests should call the starter function" duration="2" />
 </file>
 </testExecutions>
