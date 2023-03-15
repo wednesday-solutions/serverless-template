@@ -74,17 +74,3 @@ updateTodo:
 #             - Arn
 
 
-# postConfirmation:
-#   handler: functions/cognito-triggers/post-confirmation/index.handler
-#   role: LambdaRDSRole
-#   dependsOn:
-#     - CognitoUserPool
-#   events:
-#     - cognitoUserPool:
-#         trigger: PostConfirmation
-#         pool: slsTodoPool
-#         existing: true
-#   environment:
-#     COGNITO_USER_POOL_ID: ${file(./services/cognito/get-cognito-host.js)}
-
-
