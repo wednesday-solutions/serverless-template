@@ -13,7 +13,7 @@ export const updateHandler = async (event, { logger }) => {
 			data: updatedTodoResponse,
 		}).ok();
 	} catch (error) {
-		logger.error(error);
+		logger?.error(error);
 		return new LambdaCloser({
 			code: 'E1',
 		}).badRequest();
