@@ -1,4 +1,7 @@
-import { CREATE_USER_MOCK } from '@utils/mockData/mockData';
+import {
+	CREATE_USER_MOCK,
+	CREATE_USER_ERROR_MOCK,
+} from '@utils/mockData/mockData';
 import * as utils from '@src/interface-adaptors/daos/user';
 import { create, handler } from '../index';
 
@@ -21,6 +24,16 @@ describe('create user function tests', () => {
 		const res = await create(event, { logger });
 		expect(res.statusCode).toBe(200);
 		expect(res.body.message).toBe(CREATE_USER_MOCK.message);
+	});
+
+	it('If create user fails', async () => {
+		jest
+			.spyOn(utils, 'createUser')
+			.mockRejectedValueOnce(CREATE_USER_ERROR_MOCK);
+		const res = await create(event, { logger });
+		expect(res.message).toBe(CREATE_USER_ERROR_MOCK.message);
+		expect(res.body.code).toBe(CREATE_USER_ERROR_MOCK.error.code);
+		expect(res.body.message).toBe(CREATE_USER_ERROR_MOCK.error.message);
 	});
 
 	it('should throw error if User is not created properly', async () => {

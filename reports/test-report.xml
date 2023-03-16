@@ -1,69 +1,74 @@
 <testExecutions version="1">
-<file path="functions/todo/removeTodo/tests/index.test.js">
-<testCase name="delete todo function tests should delete Todo properly" duration="6" />
-<testCase name="delete todo function tests should throw error if Todo is not deleted properly" duration="80" />
-</file>
-<file path="functions/user/createUser/tests/index.test.js">
-<testCase name="create user function tests should create User properly" duration="4" />
-<testCase name="create user function tests should throw error if User is not created properly" duration="94" />
-</file>
-<file path="functions/todo/updateTodo/tests/index.test.js">
-<testCase name="update todo function tests should update Todo properly" duration="4" />
-<testCase name="update todo function tests should throw error if Todo is not updated properly" duration="106" />
-</file>
-<file path="services/notifications/tests/createSnsTopic.test.js">
-<testCase name="Tests for createSnsTopic method should throw if topicName is not passed" duration="12" />
-<testCase name="Tests for createSnsTopic method should call the sns client with CreateTopicCommand" duration="68" />
-<testCase name="Tests for createSnsTopic method should return error accordingly" duration="21" />
-</file>
-<file path="services/notifications/tests/subscriptions.test.js">
-<testCase name="SNS serice subscription for a topic tests suite subscribeToEmail method tests should return throw if no parameters are provided" duration="12" />
-<testCase name="SNS serice subscription for a topic tests suite subscribeToEmail method tests should return a error message if correct params are not provided" duration="2" />
-<testCase name="SNS serice subscription for a topic tests suite subscribeToEmail method tests should call the snsClient with SubscribeCommand" duration="66" />
-</file>
-<file path="services/parameterStore/tests/ssmHelpers.test.js">
-<testCase name="ssm helpers test suite getParamsFromSSM tests should handle case where ssm params exist as expected" duration="8" />
-<testCase name="ssm helpers test suite getParamsFromSSM tests should handle case where ssm params do not exist as expected" duration="2" />
-<testCase name="ssm helpers test suite handleSSMResponse tests should handle case where response provided matches success scenario" duration="1" />
-<testCase name="ssm helpers test suite handleSSMResponse tests should handle case where response provided matches error scenario" duration="1" />
-</file>
-<file path="functions/user/getUser/tests/index.test.js">
-<testCase name="get todos function tests should get User properly" duration="3" />
-<testCase name="get todos function tests If No User is found" duration="1" />
-<testCase name="get todos function tests should throw error if we do not get User" duration="7" />
-</file>
 <file path="services/reminders/tests/sesHelpers.test.js">
-<testCase name="ses helpers test suite sendEmail tests should handle case where sending email succeeds as expected" duration="9" />
+<testCase name="ses helpers test suite sendEmail tests should handle case where sending email succeeds as expected" duration="5" />
 <testCase name="ses helpers test suite sendEmail tests should handle case where no parameters are not passed in" duration="1" />
-<testCase name="ses helpers test suite sendEmail tests should handle case where one of the parameters is not passed in" duration="5" />
+<testCase name="ses helpers test suite sendEmail tests should handle case where one of the parameters is not passed in" duration="0" />
 <testCase name="ses helpers test suite sendEmail tests should handle case where one of the parameters is not passed in" duration="1" />
-<testCase name="ses helpers test suite sendEmail tests should handle case where finding email addresses from parameter store fails" duration="1" />
-<testCase name="ses helpers test suite sendEmail tests should handle case where sending email fails as expected" duration="2" />
-<testCase name="ses helpers test suite formatEmailContent tests should use the params and return formatted Body with subject and text body as expected" duration="1" />
+<testCase name="ses helpers test suite sendEmail tests should handle case where finding email addresses from parameter store fails" duration="0" />
+<testCase name="ses helpers test suite sendEmail tests should handle case where sending email fails as expected" duration="1" />
+<testCase name="ses helpers test suite formatEmailContent tests should use the params and return formatted Body with subject and text body as expected" duration="0" />
 <testCase name="ses helpers test suite formatEmailContent tests should use the params and return formatted Body with subject and html body as expected" duration="0" />
-<testCase name="ses helpers test suite formatEmailBody tests should use the params and return text body as expected" duration="1" />
+<testCase name="ses helpers test suite formatEmailBody tests should use the params and return text body as expected" duration="0" />
 <testCase name="ses helpers test suite formatEmailBody tests should use the params and return html body as expected" duration="0" />
 </file>
-<file path="utils/tests/lambda-closer.test.js">
-<testCase name="LambdaCloser should construct the response for 200" duration="3" />
-<testCase name="LambdaCloser should construct the response for 201" duration="0" />
-<testCase name="LambdaCloser should construct a partial response for partial parameters for 200" duration="1" />
-<testCase name="LambdaCloser should throw an Error if none of the required response properties provided" duration="9" />
+<file path="functions/user/getUser/tests/index.test.js">
+<testCase name="get todos function tests should get User properly" duration="2" />
+<testCase name="get todos function tests If No User is found" duration="1" />
+<testCase name="get todos function tests If get user fails" duration="1" />
+<testCase name="get todos function tests should throw error if we do not get User" duration="18" />
+</file>
+<file path="functions/user/createUser/tests/index.test.js">
+<testCase name="create user function tests should create User properly" duration="2" />
+<testCase name="create user function tests If create user fails" duration="1" />
+<testCase name="create user function tests should throw error if User is not created properly" duration="7" />
+</file>
+<file path="functions/todo/updateTodo/tests/index.test.js">
+<testCase name="update todo function tests should update Todo properly" duration="1" />
+<testCase name="update todo function tests should update Todo fails" duration="0" />
+<testCase name="update todo function tests should throw error if Todo is not updated properly" duration="7" />
 </file>
 <file path="functions/todo/getTodos/tests/index.test.js">
-<testCase name="get todos function tests should get Todo properly" duration="3" />
+<testCase name="get todos function tests should get Todo properly" duration="2" />
 <testCase name="get todos function tests If Todo is empty" duration="1" />
-<testCase name="get todos function tests should throw error if we do not get TODO" duration="7" />
+<testCase name="get todos function tests should get Todo fails" duration="1" />
+<testCase name="get todos function tests should throw error if we do not get TODO" duration="2" />
+</file>
+<file path="services/notifications/tests/subscriptions.test.js">
+<testCase name="SNS serice subscription for a topic tests suite subscribeToEmail method tests should return throw if no parameters are provided" duration="6" />
+<testCase name="SNS serice subscription for a topic tests suite subscribeToEmail method tests should return a error message if correct params are not provided" duration="1" />
+<testCase name="SNS serice subscription for a topic tests suite subscribeToEmail method tests should call the snsClient with SubscribeCommand" duration="3" />
+</file>
+<file path="services/parameterStore/tests/ssmHelpers.test.js">
+<testCase name="ssm helpers test suite getParamsFromSSM tests should handle case where ssm params exist as expected" duration="6" />
+<testCase name="ssm helpers test suite getParamsFromSSM tests should handle case where ssm params do not exist as expected" duration="1" />
+<testCase name="ssm helpers test suite handleSSMResponse tests should handle case where response provided matches success scenario" duration="0" />
+<testCase name="ssm helpers test suite handleSSMResponse tests should handle case where response provided matches error scenario" duration="1" />
+</file>
+<file path="functions/todo/removeTodo/tests/index.test.js">
+<testCase name="delete todo function tests should delete Todo properly" duration="2" />
+<testCase name="delete todo function tests should delete Todo fails" duration="1" />
+<testCase name="delete todo function tests should throw error if Todo is not deleted properly" duration="6" />
+</file>
+<file path="services/notifications/tests/createSnsTopic.test.js">
+<testCase name="Tests for createSnsTopic method should throw if topicName is not passed" duration="5" />
+<testCase name="Tests for createSnsTopic method should call the sns client with CreateTopicCommand" duration="3" />
+<testCase name="Tests for createSnsTopic method should return error accordingly" duration="7" />
 </file>
 <file path="functions/todo/create/tests/index.test.js">
 <testCase name="create todo function tests should create Todo properly" duration="2" />
-<testCase name="create todo function tests should create Todo fails" duration="0" />
-<testCase name="create todo function tests should throw error if Todo is not created properly" duration="12" />
+<testCase name="create todo function tests should create Todo fails" duration="1" />
+<testCase name="create todo function tests should throw error if Todo is not created properly" duration="6" />
 </file>
 <file path="functions/starter-function/tests/index.test.js">
-<testCase name="starter function tests should call the starter function" duration="2" />
+<testCase name="starter function tests should call the starter function" duration="1" />
 </file>
 <file path="functions/daily-cron/tests/index.test.js">
-<testCase name="starter function tests should call the starter function" duration="3" />
+<testCase name="starter function tests should call the starter function" duration="1" />
+</file>
+<file path="utils/tests/lambda-closer.test.js">
+<testCase name="LambdaCloser should construct the response for 200" duration="1" />
+<testCase name="LambdaCloser should construct the response for 201" duration="0" />
+<testCase name="LambdaCloser should construct a partial response for partial parameters for 200" duration="0" />
+<testCase name="LambdaCloser should throw an Error if none of the required response properties provided" duration="5" />
 </file>
 </testExecutions>

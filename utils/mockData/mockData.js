@@ -51,3 +51,18 @@ export const GET_USER_MOCK = {
 		updatedAt: '2023-03-15T17:55:36.000Z',
 	},
 };
+
+export const CREATE_TODO_ERROR_MOCK = {
+	message: 'Bad Request',
+	error: { code: 'E1', message: 'Failed to create a todo' },
+};
+
+export const CREATE_USER_ERROR_MOCK = {
+	message: 'Bad Request',
+	error: { code: 'E5', message: 'Failed to create User' },
+};
+
+export const GET_USER_ERROR_MOCK = {
+	message: 'Bad Request',
+	error: { code: 'E4', message: 'Data not found' },
+};

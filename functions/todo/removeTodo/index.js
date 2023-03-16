@@ -13,7 +13,7 @@ export const deleteTodoHandler = async (event, { logger }) => {
 			data: deleteTodoResponse,
 		}).ok();
 	} catch (error) {
-		logger.error(error);
+		logger?.error(error);
 		return new LambdaCloser({
 			code: 'E1',
 		}).badRequest();
