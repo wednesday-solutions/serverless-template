@@ -14,6 +14,8 @@
 		"-----------test-----------": "",
 		"test": "jest --coverage --silent --ci --runInBand --testLocationInResults --json --silent --outputFile=\"report.json\" ",
 		"test:local": "jest --coverage",
+		"test:badges": "npm run test  && jest-coverage-badges --output './badges'",
+		"create:badges": "jest-coverage-badges --output './badges'",
 		"-----------build & deployment-----------": "",
 		"build": "sls package --stage=dev",
 		"deploy:dev": "sls deploy --stage=dev",
