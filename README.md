@@ -28,8 +28,18 @@
 
 ---
 
+
 <span>We’re always looking for people who value their work, so come and join us. <a href="https://www.wednesday.is/hiring"> </br> We are hiring!</a></span>
 
+</div>
+
+<div>
+<img src='./badges/badge-statements.svg' height="20"/>
+<img src='./badges/badge-branches.svg' height="20"/>
+</div>
+<div>
+<img src='./badges/badge-lines.svg'  height="20"/>
+<img src='./badges/badge-functions.svg' height="20"/>
 </div>
 
 This is serverless template. This will help you get started with serverless architecture.

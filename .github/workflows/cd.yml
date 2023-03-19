@@ -49,6 +49,15 @@ jobs:
           fi
       - name: Install dependencies
         run: pnpm i
+
+      - name: Commit badges
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: Gitflow
+          author_email: git@wednesday.is
+          message: 'Update badges'
+          add: 'badges/'
+          push: false
       # - name: Deploy
       #   run: pnpm deploy:dev
       #   env:
